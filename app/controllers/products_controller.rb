@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
 
 	def new
 		@product = Product.new
+		@regions = Region.all
 
 		# @statuses = Status.all	
 
@@ -37,11 +38,10 @@ private
 	      :user_id,
 	      :brand,
 	      :detail,
-	      # :status_id,
 	      :status,
 	      :burden_of_shipping_fee,
 	      :shipping_method,
-	      :shipment_source_area,
+	 	  :region_id,
 	      :estimated_shipping_date,
 	      :price,
 	      :sell_flg

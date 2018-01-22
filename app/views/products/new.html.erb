@@ -1,0 +1,47 @@
+<%= form_for(@product) do |f| %>
+
+	<p>
+		ブランド：<%= f.text_field :brand, placeholder: 'ブランド' %>
+	
+	</p>
+	<p>
+		商品の詳細：<%= f.text_area :detail %>
+	
+	</p>
+	<p><%= f.label :"商品の状態：" %>
+
+		<%#= f.select :status_id, @statuses.map{|t| [t.damage_level, t.id]} %>
+
+		<%#= f.select :name,   @categories.map{|t| [t.name, t.id]} %>
+  		<%= f.select :status, [["新品、未使用", "shinpin"], ["未使用に近い", "hobo_shinpin"], ["目立った傷や汚れなし", "kirei"], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["全体的に状態が悪い", 5]] ,class:"form-control" %>
+
+
+	</p>
+	<p><%= f.label :"配送料の負担：" %>
+  		<%= f.select :burden_of_shipping_fee, [["送料込み(出品者負担)", "送料込み(出品者負担)"], ["着払い（購入者負担）", "着払い（購入者負担）"]] ,class:"form-control" %>
+	
+	</p>
+	<p><%= f.label :"配送方法：" %>
+		<%= f.select :shipping_method, [["らくらく便", "1"], ["ゆうゆう便", ""], ["大型便", "大型便"]] ,class:"form-control" %>
+
+	</p>
+	<p><%= f.label :"配送元地域：" %>
+		<%= f.select :shipment_source_area, [["東京都", "東京都"], ["千葉県", "千葉県"], ["神奈川県", "神奈川県"]] ,class:"form-control" %>
+	</p>
+	<p><%= f.label :"発送日の目安：" %>
+		<%= f.select :estimated_shipping_date, [["１〜２日で発送", "１〜２日で発送"], ["２〜３日で発送", "２〜３日で発送"], ["４〜７日で発送", "４〜７日で発送"]] ,class:"form-control" %>
+	</p>	
+
+	<p>
+		価格：<%= f.text_field :price, placeholder: '数字半角入力' %>円
+	
+	</p> 
+<!-- 	<h3>サムネイル画像</h3>
+  	<%= f.file_field :picture %>
+  	<%= f.fields_for(:product_images) do |image| %>
+    	<h3>商品画像</h3>
+    	<%= image.file_field :image_id %>
+  	<% end %> -->
+	<p> <%= f.submit '保存' %> </p>	
+
+<% end %>

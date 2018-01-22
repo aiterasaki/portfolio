@@ -1,0 +1,15 @@
+
+<h2><%= link_to '出品する',new_product_path ,class:'header-menu' %> </h2>
+<h1>商品一覧</h1>
+
+<% @products.each do |product| %>
+<br>
+<span>商品名：<%=link_to product.brand, product_path(product.id) %></span>
+<br>
+<span>¥<%=link_to product.price, product_path(product.id) %>(税込)</span>
+<br>
+<% end %>
+
+<br>
+<br>
+

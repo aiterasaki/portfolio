@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  brand: MyString
+  detail: MyText
+  status: 1
+  burden_of_shipping_fee: 1
+  shipping_method: 1
+  shipment_source_area: 1
+  estimated_shipping_date: 1
+  price: 1
+  sell_flg: false
+
+two:
+  user_id: 1
+  brand: MyString
+  detail: MyText
+  status: 1
+  burden_of_shipping_fee: 1
+  shipping_method: 1
+  shipment_source_area: 1
+  estimated_shipping_date: 1
+  price: 1
+  sell_flg: false

@@ -31,6 +31,26 @@ class ProductsController < ApplicationController
 		
 	end
 
+	def edit
+		@product = Product.find(params[:id])
+		@regions = Region.all
+		
+	end
+
+	def update
+		@product = Product.find(params[:id])
+		@product.update(product_params_up)
+
+		redirect_to product_path(@product.id)
+	end
+
+	def destroy
+		@product = Product.find(params[:id])
+		@product.destroy
+
+		redirect_to products_path
+	end
+
 private
 
 	  def product_params
@@ -42,6 +62,21 @@ private
 	      :burden_of_shipping_fee,
 	      :shipping_method,
 	 	  :region_id,
+	      :estimated_shipping_date,
+	      :price,
+	      :sell_flg
+	    )
+	  end
+
+	  def product_params_up
+  	    params.require(:product).permit(
+	      :user_id,
+	      :brand,
+	      :detail,
+	      :status,
+	      :burden_of_shipping_fee,
+	      :shipping_method,
+	      :region_id,
 	      :estimated_shipping_date,
 	      :price,
 	      :sell_flg

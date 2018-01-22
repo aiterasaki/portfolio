@@ -12,4 +12,8 @@
 	<h3>発送日の目安：<%= @product.estimated_shipping_date %></h3>
 	<h3>￥<%= @product.price %>(税込)</h3>
 
+<%= link_to "編集", edit_product_path(@product.id) %>
+
+<%= link_to "削除", product_path(@product.id), method: :delete, class: "btn destroy-btn", "data-confirm" => "本当に削除しますか？" %>
+
 <%= link_to "一覧へ戻る", products_path %>

@@ -1,6 +1,32 @@
+<h3>商品の情報を入力</h3>
+
 <%= form_for(@product) do |f| %>
+<p>出品画像<span class="form-require">必須</span></p>
+<p>最大4枚までアップロードできます</p>
+
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this photo from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+    <!-- サムネイル -->
+    <p><%= f.attachment_field :thumbnail %>
+	</div>
+	<!-- 複数枚投稿可能 -->
+	<p><%= f.attachment_field :product_images_images, multiple: true %></p>
+	<p><%= f.attachment_field :product_images_images, multiple: true %></p>
+	<p><%= f.attachment_field :product_images_images, multiple: true %></p>
+
 	<p>
-		商品名：<%= f.text_field :name, placeholder: '商品名（必須40文字まで）' %>
+		商品名<span class="form-require">必須</span>：<%= f.text_field :name, placeholder: '商品名（必須40文字まで）' %>
 	</p>
 
 	<p>
@@ -8,12 +34,15 @@
 	
 	</p>
 	<p>
-		商品の詳細：<%= f.text_area :detail %>
+		商品の説明<span class="form-require">必須</span>：<%= f.text_area :detail %>
 	
 	</p>
+	<p>商品の詳細</p>
 	<p><%= f.label :"商品の状態：" %>
   		<%= f.select :status, [["新品、未使用", "new_product"], ["未使用に近い", "unused"], ["目立った傷や汚れなし", "no_noticeable_scratch_or_dirt"], ["やや傷や汚れあり", "slightly_scratched_or_dirty"], ["傷や汚れあり", "scratches_and_dirt"], ["全体的に状態が悪い", "bad"]] ,class:"form-control" %>
 	</p>	
+
+	<p>配送について</p>
 	<p><%= f.label :"配送料の負担：" %>
   		<%= f.select :burden_of_shipping_fee, [["送料込み(出品者負担)", "postage_included"], ["着払い（購入者負担）", "freight_collect"]] ,class:"form-control" %>
 	</p>
@@ -31,20 +60,15 @@
 		<%= f.select :estimated_shipping_date, [["１〜２日で発送", "_2days"], ["２〜３日で発送", "_3days"], ["４〜７日で発送", "_7days"]] ,class:"form-control" %>
 	</p>	
 
+	<p>販売価格(300〜9,999,999)</p>
 	<p>
 		価格：<%= f.text_field :price, placeholder: '数字半角入力' %>円
 	
 	</p>
 
-<p>最大4枚までアップロードできます</p>
 
-	<p>出品画像：<%= f.attachment_field :product_images_images, multiple: true %></p>
- 	<!-- <h3>サムネイ	ル画像</h3> -->
-  	<%#= f.file_field :picture %>
-  	<%#= f.fields_for(:product_images) do |image| %>
-    	<!-- <h3>商品画像</h3> -->
-    	<%#= image.file_field :image_id %>
-  	<%# end %>
-	<p> <%= f.submit '保存' %> </p>	
+	<p> <%= f.submit '出品する' %> </p>	
 
 <% end %>
+
+<%= link_to "もどる", products_path %>

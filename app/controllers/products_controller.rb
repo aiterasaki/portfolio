@@ -69,6 +69,7 @@ private
 	      :price,
 	      :sell_flg,
 	      :name,
+	      :thumbnail,
 	      product_images_images: []
 	    
 	    )
@@ -87,6 +88,7 @@ private
 	      :price,
 	      :sell_flg,
 	      :name,
+	      :thumbnail,
 	      product_images_images: []
 	    
 	    )

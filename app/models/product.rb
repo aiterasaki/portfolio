@@ -1,6 +1,9 @@
 class Product < ApplicationRecord
 	# validates :detail, presence: true
 	validates :price, presence: true
+	validates_presence_of :name
+	validates_presence_of :thumbnail
+  	attachment :thumbnail
 	
 	belongs_to :region
 	has_many :product_images, dependent: :destroy

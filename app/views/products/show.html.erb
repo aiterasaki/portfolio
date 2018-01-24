@@ -13,6 +13,10 @@
 
 	<h3>￥<%= @product.price %>(税込)</h3>
 
+<p>
+  <%= attachment_image_tag @product, :thumbnail, :fill, 300, 300, format: 'jpeg' %>
+</p>
+
 
 <% if @product.product_images.present? %>
   <% @product.product_images.each do |image| %>
@@ -28,4 +32,4 @@
 
 <%= link_to "削除", product_path(@product.id), method: :delete, class: "btn destroy-btn", "data-confirm" => "本当に削除しますか？" %>
 
-<%= link_to "一覧へ戻る", products_path %>
+<%= link_to "一覧へもどる", products_path %>

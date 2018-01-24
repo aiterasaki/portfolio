@@ -31,7 +31,11 @@
 	<p>
 		価格：<%= f.text_field :price, placeholder: '数字半角入力' %>円
 	
-	</p> 
+	</p>
+
+<p>最大4枚までアップロードできます</p>
+
+	<p>出品画像：<%= f.attachment_field :product_images_images, multiple: true %></p>
  	<!-- <h3>サムネイ	ル画像</h3> -->
   	<%#= f.file_field :picture %>
   	<%#= f.fields_for(:product_images) do |image| %>

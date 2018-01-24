@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
 	def new
 		@product = Product.new
 		@regions = Region.all
+		@product.product_images.build
 
 		# @statuses = Status.all	
 
@@ -23,6 +24,8 @@ class ProductsController < ApplicationController
 	def index
 		@products = Product.all.order(created_at: 'desc')
 		# @products = Product.all.order(created_at: 'desc').page(params[:page])
+		# @product.product_images = ProductImage.all
+		
 	end
 
 	def show
@@ -64,7 +67,9 @@ private
 	 	  :region_id,
 	      :estimated_shipping_date,
 	      :price,
-	      :sell_flg
+	      :sell_flg,
+	      product_images_images: []
+	    
 	    )
 	  end
 
@@ -79,7 +84,9 @@ private
 	      :region_id,
 	      :estimated_shipping_date,
 	      :price,
-	      :sell_flg
+	      :sell_flg,
+	      product_images_images: []
+	    
 	    )
 	  end
 	

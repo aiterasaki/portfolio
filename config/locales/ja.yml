@@ -1,0 +1,36 @@
+ja:
+  enums:
+    product:
+      status:
+        shinpin: "新品、未使用"
+        hobo_shinpin: "未使用に近い"
+
+        # new: "新品、未使用"
+        # unused: "未使用に近い"
+        # no_noticeable_scratch_or_dirt: "目立った傷や汚れなし"
+        # slightly_scratched_or_dirty: "やや傷や汚れあり"
+        # scratches_and_dirt: "傷や汚れあり"
+        # bad: "全体的に状態が悪い"
+
+
+        # status_0: "新品、未使用"
+        # status_1: "未使用に近い"
+        # status_2: "目立った傷や汚れなし"
+        # status_3: "やや傷や汚れあり"
+        # status_4: "傷や汚れあり"
+        # status_5: "全体的に状態が悪い"
+
+ja:
+  enums:
+    product:
+      burden_of_shipping_fee:
+        postage_included: "送料込み(出品者負担)"
+        freight_collect: "着払い（購入者負担）"
+
+ja:
+  enums:
+    product:
+      estimated_shipping_date:
+        _2days: "１〜２日で発送"
+        _3days: "２〜３日で発送"
+        _7days: "４〜７日で発送"

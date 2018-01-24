@@ -1,20 +1,15 @@
 	
 	<h3>ブランド：<%= @product.brand %></h3>
 	<h3>商品の詳細：<%= @product.detail %></h3>	
+
 	<h3>商品の状態：<%= @product.status_i18n %></h3>
-	<!-- <h3>配送料の負担：<%#= @product.burden_of_shipping_fee_i18n %></h3> -->
-
-	<h3>配送料の負担：<%= @product.burden_of_shipping_fee %></h3>
-
-	<h3>配送方法：<%= @product.shipping_method %></h3>
-
-
+	<h3>配送料の負担：<%= @product.burden_of_shipping_fee_i18n %></h3>
+	
+	<h3>配送方法：<%= @product.shipping_method_i18n %></h3>
+	
 	<h3>配送元地域：<%= @product.region.name %></h3>
 
-	
-	<!-- <h3>発送日の目安：<%#= @product.estimated_shipping_date_i18n %></h3> -->
-
-	<h3>発送日の目安：<%= @product.estimated_shipping_date %></h3>
+	<h3>発送日の目安：<%= @product.estimated_shipping_date_i18n %></h3>
 
 	<h3>￥<%= @product.price %>(税込)</h3>
 

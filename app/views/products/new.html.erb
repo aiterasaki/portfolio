@@ -1,4 +1,7 @@
 <%= form_for(@product) do |f| %>
+	<p>
+		商品名：<%= f.text_field :name, placeholder: '商品名（必須40文字まで）' %>
+	</p>
 
 	<p>
 		ブランド：<%= f.text_field :brand, placeholder: 'ブランド' %>
@@ -9,13 +12,13 @@
 	
 	</p>
 	<p><%= f.label :"商品の状態：" %>
-  		<%= f.select :status, [["新品、未使用", "shinpin"], ["未使用に近い", "hobo_shinpin"], ["目立った傷や汚れなし", "kirei"], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["全体的に状態が悪い", 5]] ,class:"form-control" %>
-	</p>
+  		<%= f.select :status, [["新品、未使用", "new_product"], ["未使用に近い", "unused"], ["目立った傷や汚れなし", "no_noticeable_scratch_or_dirt"], ["やや傷や汚れあり", "slightly_scratched_or_dirty"], ["傷や汚れあり", "scratches_and_dirt"], ["全体的に状態が悪い", "bad"]] ,class:"form-control" %>
+	</p>	
 	<p><%= f.label :"配送料の負担：" %>
-  		<%= f.select :burden_of_shipping_fee, [["送料込み(出品者負担)", "送料込み(出品者負担)"], ["着払い（購入者負担）", "着払い（購入者負担）"]] ,class:"form-control" %>
+  		<%= f.select :burden_of_shipping_fee, [["送料込み(出品者負担)", "postage_included"], ["着払い（購入者負担）", "freight_collect"]] ,class:"form-control" %>
 	</p>
 	<p><%= f.label :"配送方法：" %>
-		<%= f.select :shipping_method, [["らくらく便", "1"], ["ゆうゆう便", ""], ["大型便", "大型便"]] ,class:"form-control" %>
+		<%= f.select :shipping_method, [["らくらく便", "small"], ["ゆうゆう便", "medium"], ["大型便", "big"]] ,class:"form-control" %>
 
 	</p>
 	<p>
@@ -25,7 +28,7 @@
 
 	</p>
 	<p><%= f.label :"発送日の目安：" %>
-		<%= f.select :estimated_shipping_date, [["１〜２日で発送", "１〜２日で発送"], ["２〜３日で発送", "２〜３日で発送"], ["４〜７日で発送", "４〜７日で発送"]] ,class:"form-control" %>
+		<%= f.select :estimated_shipping_date, [["１〜２日で発送", "_2days"], ["２〜３日で発送", "_3days"], ["４〜７日で発送", "_7days"]] ,class:"form-control" %>
 	</p>	
 
 	<p>

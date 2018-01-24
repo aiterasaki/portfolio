@@ -68,6 +68,7 @@ private
 	      :estimated_shipping_date,
 	      :price,
 	      :sell_flg,
+	      :name,
 	      product_images_images: []
 	    
 	    )
@@ -85,6 +86,7 @@ private
 	      :estimated_shipping_date,
 	      :price,
 	      :sell_flg,
+	      :name,
 	      product_images_images: []
 	    
 	    )

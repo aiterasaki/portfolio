@@ -3,10 +3,7 @@ class ProductsController < ApplicationController
 
 	def new
 		@product = Product.new
-		@regions = Region.all
-		@product.product_images.build
-
-		# @statuses = Status.all	
+		@product.product_images.build	
 
 	end
 

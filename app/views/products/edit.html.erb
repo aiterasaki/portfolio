@@ -53,7 +53,7 @@
 	</p>
 	<p>
 		<%= f.label :"配送元地域：" %>
-		<%= f.collection_select :region_id, @regions, :id, :name %>
+		<%= f.collection_select :region_id, Region.all, :id, :name %>
 
 
 	</p>

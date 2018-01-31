@@ -35,6 +35,7 @@
     </div>
   <% end %>
 
+
     <div class="field">
     <!-- サムネイル -->
     <p><%= f.attachment_field :thumbnail %>
@@ -50,6 +51,7 @@
 
 	<p>
 		ブランド：<%= f.text_field :brand, placeholder: 'ブランド' %>
+	
 	
 	</p>
 	<p>
@@ -85,7 +87,6 @@
 	
 	</p>
 
-	<p>
 		<!-- 大きいカテゴリー -->
 		<!-- selectのidをjsで取得 -->
 		<select id="entryPlan" onchange="entryChange1();">
@@ -110,7 +111,7 @@
 </div>
 
 <!-- 表示非表示切り替え -->
-<div id="thirdBox">	
+<div id="thirdBox">
 		<!-- 小カテゴリー③ -->
 			<%= f.collection_select :productable_id, HandmadeCategory.all, :id, :name, class: "handmade"  %>
 			<%= f.hidden_field :productable_type,value: :HandmadeCategory %>
@@ -137,20 +138,30 @@ if(selecter == "select1") {
 document.getElementById('firstBox').style.display = "block";
 document.getElementById('secondBox').style.display = "";
 document.getElementById('thirdBox').style.display = "";
+$(function(){
+  $('#secondBox').after($('#thirdBox'));
+  $('#thirdBox' ).after($('#firstBox'));
+});
 	}
 
 else if(selecter == "select2") {
 document.getElementById('firstBox').style.display = "";
 document.getElementById('secondBox').style.display = "block";
 document.getElementById('thirdBox').style.display = "";
-
+$(function(){
+  $('#firstBox').after($('#thirdBox'));
+  $('#thirdBox' ).after($('#secondBox'));
+});
 	}
 
 else if(selecter == "select3") {
 document.getElementById('firstBox').style.display = "";
 document.getElementById('secondBox').style.display = "";
 document.getElementById('thirdBox').style.display = "block";
-
+$(function(){
+  $('#firstBox').after($('#secondBox'));
+  $('#secondBox' ).after($('#thirdBox'));
+});
 	}
 
 };

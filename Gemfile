@@ -8,10 +8,11 @@ end
 gem 'enum_help'
 gem 'pry-rails'
 gem 'seed-fu'
+gem 'devise'
 
 gem "refile", github: 'refile/refile', require: "refile/rails"
 gem "refile-mini_magick", github: 'refile/refile-mini_magick'
-
+gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record

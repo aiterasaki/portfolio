@@ -46,7 +46,7 @@ class ProductsController < ApplicationController
 	def edit
 		@product = Product.find(params[:id])
 		@regions = Region.all
-		
+	
 	end
 
 	def update
@@ -54,6 +54,7 @@ class ProductsController < ApplicationController
 		@product.update(product_params)
 
 		redirect_to product_path(@product.id)
+	# binding.pry	
 	end
 
 	def destroy

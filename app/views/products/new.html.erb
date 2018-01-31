@@ -51,6 +51,7 @@
 	<p>
 		ブランド：<%= f.text_field :brand, placeholder: 'ブランド' %>
 	
+	
 	</p>
 	<p>
 		商品の説明<span class="form-require">必須</span>：<%= f.text_area :detail %>
@@ -84,7 +85,7 @@
 		価格：<%= f.text_field :price, placeholder: '数字半角入力' %>円
 	
 	</p>
-	
+
 		<!-- 大きいカテゴリー -->
 		<!-- selectのidをjsで取得 -->
 		<select id="entryPlan" onchange="entryChange1();">

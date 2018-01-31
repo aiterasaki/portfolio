@@ -19,3 +19,31 @@ ja:
         _2days: "１〜２日で発送"
         _3days: "２〜３日で発送"
         _7days: "４〜７日で発送"
+  errors:
+    messages:
+      not_saved:
+        one: "エラーが発生しました。%{resource}を登録できません。"
+        other: "%{count}このエラーが発生しました。%{resource}を登録できません。"
+  activerecord:
+    errors:
+      template:
+        header:
+          one:   "%{model}にエラーが発生しました。"
+          other: "%{model}に%{count}つのエラーが発生しました。"
+        body: "次の項目を確認してください。"
+      messages:
+        taken: "はすでに存在します。"
+        record_invalid: "バリデーションに失敗しました。 %{errors}"
+      full_messages:
+        format: "[%{attribute}]%{message}"
+      models:
+        product:
+          attributes:
+            productable:
+              required: "足らんです。"
+        user:
+          attributes:
+            base:
+              restricted:  "制限付きユーザーには許可されていない動作です"
+            company_id:
+              user_not_working_for: "ユーザが所属していない会社です"

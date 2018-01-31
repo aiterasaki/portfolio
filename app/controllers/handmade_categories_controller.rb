@@ -1,0 +1,2 @@
+class HandmadeCategoriesController < ApplicationController
+end

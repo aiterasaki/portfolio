@@ -10,7 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180124043922) do
+ActiveRecord::Schema.define(version: 20180126045848) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "handmade_categories", force: :cascade do |t|
+    t.string "name"
+    t.integer "category_id"
+    t.boolean "brand_flg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ladies_categories", force: :cascade do |t|
+    t.string "name"
+    t.integer "category_id"
+    t.boolean "brand_flg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mens_categories", force: :cascade do |t|
+    t.string "name"
+    t.integer "category_id"
+    t.boolean "brand_flg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "product_images", force: :cascade do |t|
     t.integer "product_id"
@@ -34,6 +64,9 @@ ActiveRecord::Schema.define(version: 20180124043922) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "thumbnail_id"
+    # ポリモーフィック関連用の、ladies_categoryのidや名前を入れるカラム追加
+    t.integer "productable_id"
+    t.string "productable_type"
   end
 
   create_table "regions", force: :cascade do |t|

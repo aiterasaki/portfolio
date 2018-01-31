@@ -28,6 +28,11 @@
 
 <br>
 
+
+	<h3>カテゴリー：<%= @product.productable.category.name %></h3>
+
+	<h3><%= @product.productable.name %></h3>
+
 <%= link_to "編集", edit_product_path(@product.id) %>
 
 <%= link_to "削除", product_path(@product.id), method: :delete, class: "btn destroy-btn", "data-confirm" => "本当に削除しますか？" %>

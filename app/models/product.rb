@@ -4,6 +4,11 @@ class Product < ApplicationRecord
 	validates_presence_of :name
 	validates_presence_of :thumbnail
   	attachment :thumbnail
+
+  	# 複数関連しているテーブルとのアソシエーションの記述
+  	# つまり、ladies,mens,handmadeテーブルたち
+  	belongs_to :productable, polymorphic: true
+  	accepts_attachments_for :productable
 	
 	belongs_to :region
 	has_many :product_images, dependent: :destroy
@@ -38,7 +43,6 @@ class Product < ApplicationRecord
 						   medium: 1,
 						   big: 2
 					      }
-
 
 	# enum shipping_method: {らくらく便: 0,
 	# 					  	 ゆうゆう便: 1,

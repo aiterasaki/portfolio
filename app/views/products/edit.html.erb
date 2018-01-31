@@ -1,5 +1,23 @@
-<h3>編集する</h3>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<title>template</title>
+<!-- <link href="../../_common/css/style.css" rel="stylesheet" type="text/css"> -->
+</head>
+<body>
+<header>
+<div class="header-contents">
+<h1>タイトル</h1>
+<h2>サブタイトル</h2>
+</div>/.header-contents
+</header>
+<div class="main-wrapper">
+<section>
 
+<h3>編集する</h3>
 
 <%= form_for(@product) do |f| %>
 <p>出品画像<span class="form-require">必須</span></p>
@@ -67,6 +85,80 @@
 	
 	</p>
 
-	<p> <%= f.submit '保存する' %> </p>	
+	<p>
+		<!-- 大きいカテゴリー -->
+		<!-- selectのidをjsで取得 -->
+		<select id="entryPlan" onchange="entryChange1();">
+			<!-- その内部のvalueを変数に保存 -->
+			<option value="select1">レディース</option>
+			<option value="select2">メンズ</option>
+			<option value="select3">ハンドメイド</option>
+		</select>
+
+<!-- 表示非表示切り替え -->
+<div id="firstBox">
+		<!-- 小カテゴリー① -->
+			<%= f.collection_select :productable_id, LadiesCategory.all, :id, :name, class: "ladies"  %>
+			<%= f.hidden_field :productable_type,value: :LadiesCategory %>
+</div>
+
+<!-- 表示非表示切り替え -->
+<div id="secondBox">
+		<!-- 小カテゴリー② -->
+			<%= f.collection_select :productable_id, MensCategory.all, :id, :name, class: "mens" %>
+			<%= f.hidden_field :productable_type,value: :MensCategory %>
+</div>
+
+<!-- 表示非表示切り替え -->
+<div id="thirdBox">	
+		<!-- 小カテゴリー③ -->
+			<%= f.collection_select :productable_id, HandmadeCategory.all, :id, :name, class: "handmade"  %>
+			<%= f.hidden_field :productable_type,value: :HandmadeCategory %>
+</div>
+
+	<p> <%= f.submit '出品する' %> </p>	
 
 <% end %>
+
+<%= link_to "もどる", products_path %>
+
+
+</section>
+</div><!-- /.main-wrapper -->
+<footer>JavaScript Samples</footer>
+
+<script>
+// selectのところで関数を呼び出し
+function entryChange1(){
+	// selectの中のoptionのvalueを取得し、変数に入れる
+var selecter = document.getElementById( "entryPlan" ).value;
+// valueと一致するもののみをdisplay:block;それ以外は消す。
+if(selecter == "select1") {
+document.getElementById('firstBox').style.display = "block";
+document.getElementById('secondBox').style.display = "";
+document.getElementById('thirdBox').style.display = "";
+	}
+
+else if(selecter == "select2") {
+document.getElementById('firstBox').style.display = "";
+document.getElementById('secondBox').style.display = "block";
+document.getElementById('thirdBox').style.display = "";
+
+	}
+
+else if(selecter == "select3") {
+document.getElementById('firstBox').style.display = "";
+document.getElementById('secondBox').style.display = "";
+document.getElementById('thirdBox').style.display = "block";
+
+	}
+
+};
+//オンロードさせ、リロード時に選択を保持
+window.onload = entryChange1;
+
+
+</script>
+
+</body>
+</html>

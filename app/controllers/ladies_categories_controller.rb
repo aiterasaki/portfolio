@@ -1,0 +1,2 @@
+class LadiesCategoriesController < ApplicationController
+end

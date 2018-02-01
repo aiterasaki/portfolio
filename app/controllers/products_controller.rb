@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
 
 	def create
 		@product = Product.new(product_params)
-	    # @product.user_id = current_user.id
+	    @product.user_id = current_user.id
 	    # binding.pry
 	  	 if @product.save
 

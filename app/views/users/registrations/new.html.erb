@@ -50,10 +50,8 @@
   </div>
 <br>
   <div class="field">
-    <%= fields_for :region do |region| %>
-      <%= f.label :都道府県 %><br />
-      <%= region.collection_select :region_id, Region.all, :id, :name %>
-    <% end %>
+    <%= f.label :都道府県 %><br />
+    <%= f.collection_select :region_id, Region.all, :id, :name %>
   </div>
 <br>
   <div class="field">

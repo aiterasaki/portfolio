@@ -15,10 +15,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <%= f.label :パスワード %><br />
     <%= f.password_field :password, autocomplete: "off", :placeholder => "６文字以上" %>
   </div>
 
@@ -53,8 +50,10 @@
   </div>
 <br>
   <div class="field">
-    <%= f.label :都道府県 %><br />
-    <%= f.text_field :region_id, autofocus: true, autocomplete: "region_id" %>
+    <%= fields_for :region do |region| %>
+      <%= f.label :都道府県 %><br />
+      <%= region.collection_select :region_id, Region.all, :id, :name %>
+    <% end %>
   </div>
 <br>
   <div class="field">

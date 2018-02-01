@@ -1,5 +1,8 @@
 <% if user_signed_in? %>
-    Logged in as <%= current_user.email %>
+
+<h2>こんにちは、<%= current_user.nick_name %>さん</h2>
+<p>ユーザー用ページです。</p>
+
     <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <%= link_to 'プロフィール変更', edit_user_registration_path %>
 <% else %>

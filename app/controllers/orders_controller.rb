@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
-		@order = Order.find(params[:id])
+		# @order = Order.find(params[:id])
 		
 	end
 

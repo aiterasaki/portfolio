@@ -86,24 +86,4 @@ private
 	      # productable_attributes: [:category_id]
 	    )
 	  end
-
-	  # def product_params_up
-  	#     params.require(:product).permit(
-	  #     :user_id,
-	  #     :brand,
-	  #     :detail,
-	  #     :status,
-	  #     :burden_of_shipping_fee,
-	  #     :shipping_method,
-	  #     :region_id,
-	  #     :estimated_shipping_date,
-	  #     :price,
-	  #     :sell_flg,
-	  #     :name,
-	  #     :thumbnail,
-	  #     product_images_images: []
-	    
-	  #   )
-	  # end
-	
 end

@@ -1,4 +1,4 @@
-	
+	<h3>商品名：<%= @product.name %></h3>	
 	<h3>ブランド：<%= @product.brand %></h3>
 	<h3>商品の詳細：<%= @product.detail %></h3>	
 
@@ -34,7 +34,7 @@
 <%= link_to "削除", product_path(@product.id), method: :delete, class: "btn destroy-btn", "data-confirm" => "本当に削除しますか？" %>
 <% end %>
 
-<%= link_to "購入", orders_path %>
+<%= link_to "購入", order_path %>
 <br>
 <br>
 <%= link_to "一覧へもどる", products_path %>

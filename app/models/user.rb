@@ -4,8 +4,12 @@ class User < ApplicationRecord
 	devise :database_authenticatable, :registerable,
 	 :recoverable, :rememberable, :trackable, :validatable
 
-	validates_uniqueness_of :nick_name
-	validates_presence_of :nick_name
+	validates :nick_name, presence: true
+	validates :first_name, presence: true
+	validates :last_name, presence: true
+	
+	# validates :name, presence: true, uniqueness: true
+
 
 	belongs_to :region
 	

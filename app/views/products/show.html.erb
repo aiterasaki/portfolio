@@ -16,25 +16,22 @@
 <p>
   <%= attachment_image_tag @product, :thumbnail, :fill, 300, 300, format: 'jpeg' %>
 </p>
-
-
-<% if @product.product_images.present? %>
+<p>
   <% @product.product_images.each do |image| %>
     <%= attachment_image_tag image, :image, :fill, 300, 300 %>
   <% end %>
-  <% else %>
-    <p>画像がありません</p>
-<% end %>
-
+</p>
 <br>
-
 
 	<h3>カテゴリー：<%= @product.productable.category.name %></h3>
 
 	<h3><%= @product.productable.name %></h3>
 
+<% if current_user.id == @product.user_id %>
+
 <%= link_to "編集", edit_product_path(@product.id) %>
 
 <%= link_to "削除", product_path(@product.id), method: :delete, class: "btn destroy-btn", "data-confirm" => "本当に削除しますか？" %>
+<% end %>
 
 <%= link_to "一覧へもどる", products_path %>

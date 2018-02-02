@@ -14,4 +14,5 @@ class User < ApplicationRecord
 	belongs_to :region
 	
 	has_many :products
+	has_many :orders
 end

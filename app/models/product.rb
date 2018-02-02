@@ -10,9 +10,10 @@ class Product < ApplicationRecord
   	belongs_to :productable, polymorphic: true
   	accepts_attachments_for :productable
 	
-	belongs_to :region
-	
+	belongs_to :region	
 	belongs_to :user
+
+	has_many :product_orders
 
 	has_many :product_images, dependent: :destroy
   	accepts_attachments_for :product_images, attachment: :image

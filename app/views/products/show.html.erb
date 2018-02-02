@@ -34,4 +34,7 @@
 <%= link_to "削除", product_path(@product.id), method: :delete, class: "btn destroy-btn", "data-confirm" => "本当に削除しますか？" %>
 <% end %>
 
+<%= link_to "購入", orders_path %>
+<br>
+<br>
 <%= link_to "一覧へもどる", products_path %>

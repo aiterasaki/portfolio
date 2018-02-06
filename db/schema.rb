@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180202032919) do
+ActiveRecord::Schema.define(version: 20180206041339) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20180202032919) do
     t.integer "region_id"
     t.integer "estimated_shipping_date"
     t.integer "price"
-    t.boolean "sell_flg"
+    t.boolean "sell_flg", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"

@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+	  before_action :authenticate_user!, only: [:new, :edit, :update]
+	  before_action :correct_user, only: [:edit, :update]
 
 
 	def new

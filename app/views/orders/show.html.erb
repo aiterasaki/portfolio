@@ -1,37 +1,28 @@
 <h2>取引画面</h2>
 
-<h2>商品</h2>	
+<h2>商品</h2> 
+
+<h3><% @order.product_orders.each do |product_order| %></h3>
 
 <p>
-  <%= attachment_image_tag @product, :thumbnail, :fill, 300, 300, format: 'jpeg' %>
+  <%= attachment_image_tag product_order.product, :thumbnail, :fill, 300, 300, format: 'jpeg' %>
 </p>
 
-	<h3><%= @product.name %></h3>
-	<h3>￥<%= @product.price %>(税込)</h3>
+  <h3><%= product_order.product.name %></h3>
+  <h3>¥<%= product_order.product.price %>(税込)</h3>
+  <h3>送料：<%= product_order.product.burden_of_shipping_fee_i18n %></h3>
 
-	<h3>送料：<%= @product.burden_of_shipping_fee_i18n %></h3>
+  <% end %>
+
 
 <h2>お届け先</h2>	
 
-	<h3>〒<%= current_user.postal_code %></h3>
+	<h3>〒<%= @order.postal_code %></h3>
+	<h3><%= @order.region.name %>
+		<%= @order.address_city %>
+		<%= @order.address_street %>
+		<%= @order.address_building %></h3>
 
-	<h3><%= current_user.region.name %>
-		<%= current_user.address_city %>
-		<%= current_user.address_street %>
-		<%= current_user.address_building %></h3>
+	<h3><%= @order.first_name %> <%= @order.last_name %> 様</h3>
 
-	<h3><%= current_user.first_name %> <%= current_user.last_name %> 様</h3>
-
-
-<%= link_to "別のお届け先登録", new_order_path	 %>
-
-<h2>別お届け先</h2>	
-
-	<h3>〒<%#= @order.postal_code %></h3>
-	<h3><%#= @order.region.name %>
-		<%#= @order.address_city %>
-		<%#= @order.address_street %>
-		<%#= @order.address_building %></h3>
-
-	<h3><%#= @order.first_name %> <%#= @order.last_name %> 様</h3>
 

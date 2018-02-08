@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+	# layout 'product'
 	# validates :detail, presence: true
 	validates :price, presence: true
 	validates_presence_of :name

@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
 	def user_params
     params.require(:user).permit(
-    # posts_attributes: [
     	:nick_name,
     	:first_name,
     	:last_name,

@@ -4,26 +4,18 @@ Rails.application.routes.draw do
 	:registrations => 'users/registrations',
 	:sessions => 'users/sessions'   
 	} 
-	
+
 	root 'products#index'
 
-  	resources :products
+  	resources :products do
+		resources :orders,except: [:show]
+  	end
+  	resources :orders,only: :show
+
 	resources :statuses
-	
-	resources :orders
-
-
 
 	resources :users, :only => [ :show]
 
-	# root 'products#index'
-
-	# devise_for :users
-
-	# devise_for :users, :controllers => {
-	# :registrations => 'users/registrations',
-	# :sessions => 'users/sessions'   
-	# } 
 
 	# devise_scope :user do
 	# get "sign_in", :to => "users/sessions#new"

@@ -13,5 +13,6 @@ index = 1
 	  s.price = 1000 + index
 	  s.sell_flg = true
 	  index += 1
+	  s.thumbnail = Rails.root.join("public/preparation.png").open
 	end
 end

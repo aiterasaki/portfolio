@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 @charset "UTF-8";
 /* CSS Document */
@@ -90,6 +92,18 @@ a{
 a:hover{
 	color: #b04188;
 	text-decoration: underline;
+}
+
+.field{
+    width: 65%;
+    margin: 0 auto;
+    margin-top: 40px;
+    padding: 0 0 10px;
+
+}
+
+.form_btn_box{
+	background-color: pink;
 }
 
 /*とりあえず小カテゴリーは最初消す*/

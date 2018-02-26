@@ -11,6 +11,8 @@ gem 'seed-fu'
 gem 'devise'
 gem 'rails-i18n'
 
+gem 'bootstrap-sass'
+gem 'kaminari'
 gem "refile", github: 'refile/refile', require: "refile/rails"
 gem "refile-mini_magick", github: 'refile/refile-mini_magick'
 gem 'jquery-rails'

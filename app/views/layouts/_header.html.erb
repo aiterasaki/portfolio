@@ -1,0 +1,44 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" ><%= link_to "一覧へもどる", products_path, id: "logo" %></a>
+    </div>
+
+  <form class="navbar-form navbar-left" action="/action_page.php">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search" name="search">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+
+
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+
+        <h2>こんにちは、<%= current_user.nick_name %>さん</h2>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            <%= link_to 'プロフィール変更', edit_user_registration_path %>
+
+            <%= link_to 'マイページ', user_path(current_user) %>
+
+        <h2><%= link_to '出品する',new_product_path ,class:'header-menu' %> </h2>
+
+        <% else %>
+            <%= link_to "新規登録", new_user_registration_path %> |
+            <%= link_to "ログイン", new_user_session_path %>
+        <% end %>
+
+        <li><%#= link_to "Home",   '#' %></li>
+        <li><%#= link_to "Help",   '#' %></li>
+        <li><%#= link_to "Log in", '#' %></li>
+      </ul>
+    </nav>
+  </div>
+</header>

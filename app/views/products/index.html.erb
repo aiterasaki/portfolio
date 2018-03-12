@@ -1,17 +1,95 @@
+				<!-- 任意のID指定。クラスとデータ属性の指定。 -->
+				<div id="carousel-example" class="carousel slide" data-ride="carousel">
+				  <!-- インジケーターの設置。下部の○●ボタン。 -->
+				  <ol class="carousel-indicators">
+				    <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+				    <li data-target="#carousel-example" data-slide-to="1"></li>
+				    <li data-target="#carousel-example" data-slide-to="2"></li>
+				    <li data-target="#carousel-example" data-slide-to="3"></li>
+				  </ol>
 
-<h1>商品一覧</h1>
+				  <!-- スライドの内容 -->
+				  <div class="carousel-inner">
+				    <div class="item active">
+							<%= image_tag '/smile.jpg', :size => "940x390" %>
+						<div class="carousel-caption">
+							<h1>スマホでかんたん</h1>
+							<p>誰でも簡単に、売ったり買ったりを楽しめる</p>
+							<button type="button" class="btn btn-primary">ページ詳細</button>
+						</div>
+				    </div>
 
-<% @products.each do |product| %>
-<td><%= attachment_image_tag product, :thumbnail, :fill, 220, 220, format: 'jpeg' %></td>
-<br>
+				    <div class="item">
+						<%= image_tag '/mens.jpg', :size => '940x390' %>
+						<div class="carousel-caption">
+							<h1>簡単に出品できる</h1>
+							<p>スマホで写真を撮って特徴を入力するだけで、簡単に出品できます。</p>
+							<button type="button" class="btn btn-primary">ページ詳細</button>
+						</div>
+				    </div>
+				    <div class="item">
+						<%= image_tag '/hand_made.jpg', :size => '940x390' %>
+						<div class="carousel-caption">
+							<h1>すぐに購入できる</h1>
+							<p>ボタン1つで即購入。あとは出品者からの発送を待つだけです。</p>
+							<button type="button" class="btn btn-primary">ページ詳細</button>
+						</div>
+				    </div>
+				    <div class="item">
+						<%= image_tag '/ladies.jpg', :size => '940x390' %>
+						<div class="carousel-caption">
+							<h1>商品がたくさん</h1>
+							<p>毎日数十万品以上の新商品が出品されるので、ほしいものがきっと見つかります。</p>
+							<button type="button" class="btn btn-primary">ページ詳細</button>
+						</div>
+				    </div>
+				  </div>
 
-<!-- 商品名 -->
-<span><%=link_to product.name, product_path(product.id) %></span>
-<br>
-<span>¥<%=link_to product.price, product_path(product.id) %>(税込)</span>
-<br>
-<% end %>
+				  <!-- 左右の移動ボタン -->
+				  <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				  </a>
+				  <a class="right carousel-control" href="#carousel-example" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				  </a>
+				</div>
 
-<br>
-<br>
 
+<!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-md-2">
+
+          <h1 class="my-4">Shop Name</h1>
+          <div class="list-group">
+            <a href="#" class="list-group-item">レディース</a>
+            <a href="#" class="list-group-item">メンズ</a>
+            <a href="#" class="list-group-item">ハンドメイド</a>
+          </div>
+
+        </div>
+
+        <!-- /.col-md-3 -->
+
+        <div class="col-md-10">
+          <!-- </div> -->
+          <div class="row">
+			<% @products.each do |product| %>
+				<div class="col-md-4 item">
+					<td><%= attachment_image_tag product, :thumbnail, :fill, 220, 220, format: 'jpeg' %></td>
+					<!-- 商品名 -->
+					<span><%=link_to product.name, product_path(product.id) %></span>
+					<br>
+					<span>¥<%=link_to product.price, product_path(product.id) %>(税込)</span>
+				</div>
+			<% end %>
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.col-md-10 -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container -->

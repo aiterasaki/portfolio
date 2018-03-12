@@ -5,14 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="IE=edge">
 <title>template</title>
-<!-- <link href="../../_common/css/style.css" rel="stylesheet" type="text/css"> -->
+
 </head>
 <body>
 <header>
-<div class="header-contents">
-<h1>タイトル</h1>
-<h2>サブタイトル</h2>
-</div>/.header-contents
+
 </header>
 <div class="main-wrapper">
 <section>
@@ -35,15 +32,15 @@
     </div>
   <% end %>
 
-
     <div class="field">
     <!-- サムネイル -->
     <p><%= f.attachment_field :thumbnail %>
-	</div>
+
 	<!-- 複数枚投稿可能 -->
 	<p><%= f.attachment_field :product_images_images, multiple: true %></p>
 	<p><%= f.attachment_field :product_images_images, multiple: true %></p>
 	<p><%= f.attachment_field :product_images_images, multiple: true %></p>
+	</div>
 
 	<p>
 		商品名<span class="form-require">必須</span>：<%= f.text_field :name, placeholder: '商品名（必須40文字まで）' %>
@@ -51,8 +48,6 @@
 
 	<p>
 		ブランド：<%= f.text_field :brand, placeholder: 'ブランド' %>
-	
-	
 	</p>
 	<p>
 		商品の説明<span class="form-require">必須</span>：<%= f.text_area :detail %>
@@ -125,8 +120,7 @@
 
 
 </section>
-</div><!-- /.main-wrapper -->
-<footer>JavaScript Samples</footer>
+</div>
 
 <script>
 // selectのところで関数を呼び出し

@@ -10,12 +10,6 @@
   <h3>￥<%= @product.price %>(税込)</h3>
   <h3>送料：<%= @product.burden_of_shipping_fee_i18n %></h3>
 
-<h2>お届け先</h2> 
-
-  <h3><%= current_user.region.name %>
-  </h3>
-
-
 
 <h2>お届け先 入力(確認用)</h2>	
 <%= form_for [@product, @order] do |f| %>
@@ -49,7 +43,7 @@
   <%= f.hidden_field :product_id, value: @product.id %>
 <br>
   <div class="actions">
-    <%= f.submit "確認する" %>
+    <%= f.submit "購入する" %>
   </div>
 
 

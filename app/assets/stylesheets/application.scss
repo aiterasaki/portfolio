@@ -18,8 +18,9 @@
 
 @charset "UTF-8";
 
+@import "users";
 /*@import "header";*/
-/*@import "products";*/
+
 
 body{
   color: #000;
@@ -107,17 +108,6 @@ a:hover{
 	text-decoration: underline;
 }
 
-.field{
-    width: 65%;
-    margin: 0 auto;
-    /*margin-top: 40px;*/
-    /*padding: 0 0 10px;*/
-
-}
-
-.form_btn_box{
-	background-color: pink;
-}
 
 /*とりあえず小カテゴリーは最初消す*/
 #firstBox, #secondBox, #thirdBox{

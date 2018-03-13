@@ -11,8 +11,13 @@
   <h3>送料：<%= @product.burden_of_shipping_fee_i18n %></h3>
 
 
-<h2>お届け先 入力(確認用)</h2>	
+<h2>支払い方法、お届け先 入力(確認用)</h2>	
 <%= form_for [@product, @order] do |f| %>
+
+  <div class="field">
+    <p><%= f.label :"支払い方法：" %>
+        <%= f.select :method_of_payment, [["クレジットカード払い", "credit_card"], ["コンビニ払い", "convenience"]] ,class:"form-control" %>
+  </div>
 
   <div class="field">
     <%= f.label :〒 %>

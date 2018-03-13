@@ -2,20 +2,20 @@ class Product < ApplicationRecord
 	# layout 'product'
 	# validates :detail, presence: true
 	validates :price, presence: true
-	validates_presence_of :name
+	# validates_presence_of :name
 	validates_presence_of :thumbnail
   	attachment :thumbnail
 
   	# 複数関連しているテーブルとのアソシエーションの記述
   	# つまり、ladies,mens,handmadeテーブルたち
   	belongs_to :productable, polymorphic: true
-  	accepts_attachments_for :productable
+  	
+  	# accepts_attachments_for :productable
 	
 	belongs_to :region	
 	belongs_to :user
 
 	has_many :product_orders
-
 	has_many :product_images, dependent: :destroy
   	accepts_attachments_for :product_images, attachment: :image
 
@@ -34,7 +34,6 @@ class Product < ApplicationRecord
 	# 			    傷や汚れあり: 4,
 	# 			    全体的に状態が悪い: 5
 	# 				}
-
 
 	enum burden_of_shipping_fee: {postage_included: 0,
 								   freight_collect: 1 

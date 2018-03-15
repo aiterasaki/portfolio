@@ -33,10 +33,21 @@ class ProductsController < ApplicationController
 
 
 	def index
-		@products = Product.all.order(created_at: 'desc')
-		# @products = Product.all.order(created_at: 'desc').page(params[:page])
-		# @product.product_images = ProductImage.all
-		
+		if params[:category_id].presence
+			@ladies_category = LadiesCategory.find(params[:category_id])
+			@mens_category = MensCategory.find(params[:category_id])
+			@handmade_category = HandmadeCategory.find(params[:category_id])
+
+			@products = @ladies_category.products
+			@products = @mens_category.products
+			@products = @handmade_category.products
+		else
+			@products = Product.all.order(created_at: 'desc')
+		end
+
+		@ladies_categories = LadiesCategory.all
+		@mens_categories = MensCategory.all
+		@handmade_categories = HandmadeCategory.all
 	end
 
 	def show
@@ -56,6 +67,8 @@ class ProductsController < ApplicationController
 		@product.update(product_params)
 
 		redirect_to product_path(@product.id)
+
+		@product.productable_id = params [:productable_id]
 	# binding.pry	
 	end
 

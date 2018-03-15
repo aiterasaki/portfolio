@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   	end
   	resources :orders,only: :show
 
-	resources :statuses
+	# resources :statuses
 
 	resources :users, :only => [ :show]
 

@@ -64,20 +64,20 @@
             <a href="#" class="list-group-item">レディース
             </a>
 
-            <% @ladies_categories.each do |ladies_category| %>
-              <p><%= link_to ladies_category.name,root_path(category_id: ladies_category.id) %></p>
+            <% @ladies_categories.each do | ladies_category| %>
+              <p><%= link_to ladies_category.name,root_path(ladies_category: ladies_category.id) %></p>
             <% end %>
 
             <a href="#" class="list-group-item">メンズ</a>
 
             <% @mens_categories.each do |mens_category| %>
-              <p><%= link_to mens_category.name,root_path(category_id: mens_category.id) %></p>
+              <p><%= link_to mens_category.name,root_path(mens_category: mens_category.id) %></p>
             <% end %>
 
             <a href="#" class="list-group-item">ハンドメイド</a>
 
             <% @handmade_categories.each do |handmade_category|%>
-            <p><%= link_to handmade_category.name,root_path(category_id:handmade_category.id) %></p>
+            <p><%= link_to handmade_category.name,root_path(handmade_category:handmade_category.id) %></p>
             <% end %>
           </div>
         </div>

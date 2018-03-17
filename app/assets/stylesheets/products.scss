@@ -4,5 +4,26 @@
 
 
 .sold_out{
-	background-color: red;
+	color: #fff;
+    position: absolute;
+    left: 0;
+    transform: rotate(-45deg);
+    letter-spacing: 2px;
+    font-weight: 600;
+    font-size: 27px;
+    z-index: 1;
+    top: 20px;
+    left: -120px;
+
 }
+.sold_out_back{
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    z-index: 2;
+	width: 0;
+	height: 0;
+	border-bottom: 120px solid transparent;
+	border-left: 120px solid #ea352d;
+}
+

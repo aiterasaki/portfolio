@@ -1,65 +1,90 @@
-	<h3>商品名：<%= @product.name %></h3>	
-	<h3>ブランド：<%= @product.brand %></h3>
-	<h3>商品の詳細：<%= @product.detail %></h3>	
+<div class="col-md-2">
+	<%= link_to "一覧へもどる", products_path %>
+</div>
 
-	<h3>商品の状態：<%= @product.status_i18n %></h3>
-	<h3>配送料の負担：<%= @product.burden_of_shipping_fee_i18n %></h3>
-	
-	<h3>配送方法：<%= @product.shipping_method_i18n %></h3>
-	
-	<h3>配送元地域：<%= @product.region.name %></h3>
+<div class="col-md-12"> 
+ 
+		<div class="col-md-offset-2 col-md-4"> 
+			<p>
+			<%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %>
+			</p>
+			<p>
+			<% @product.product_images.each do |image| %>
+			<%= attachment_image_tag image, :image, :fill, 290, 290 %>
+			<% end %>
+			</p>
+		</div>
 
-	<h3>発送日の目安：<%= @product.estimated_shipping_date_i18n %></h3>
+		<div class="col-md-5"> 
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<th scope="row">商品名</th>
+						<td><%= @product.name %>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">ブランド</th>
+						<td><%= @product.brand %>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">商品の詳細</th>
+						<td><%= @product.detail %>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">商品の状態</th>
+						<td><%= @product.status_i18n %>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">配送料の負担</th>
+						<td><%= @product.burden_of_shipping_fee_i18n %>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">配送方法</th>
+						<td><%= @product.shipping_method_i18n %>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">配送元地域</th>
+						<td><%= @product.region.name %>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">発送日の目安</th>
+						<td><%= @product.estimated_shipping_date_i18n %>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">カテゴリー</th>
+						<td><%= @product.productable.category.name %>/
+							<%= @product.productable.name %>
+						</td>
+					</tr>
+				</tbody>		
+			</table>
 
-	<h3>￥<%= @product.price %>(税込)</h3>
+		<% if user_signed_in? %>
+		<% if current_user.id == @product.user_id %>
 
-<p>
-  <%= attachment_image_tag @product, :thumbnail, :fill, 300, 300, format: 'jpeg' %>
-</p>
-<p>
-  <% @product.product_images.each do |image| %>
-    <%= attachment_image_tag image, :image, :fill, 300, 300 %>
-  <% end %>
-</p>
-<br>
+		<%= link_to "編集", edit_product_path(@product.id) %>
 
-	<h3>カテゴリー：<%= @product.productable.category.name %></h3>
+		<%= link_to "削除", product_path(@product.id), method: :delete, class: "btn destroy-btn", "data-confirm" => "本当に削除しますか？" %>
+		<% end %>
+		<% end %>
 
-	<h3><%= @product.productable.name %></h3>
+		</div>
+</div>
+<div class="col-md-offset-2 col-md-9 col-md-offset-1">
+	<div class="text-center price_font">
+	￥<%= @product.price %>(税込)
+	</div>
+</div>
 
-<% if user_signed_in? %>
-<% if current_user.id == @product.user_id %>
-
-<%= link_to "編集", edit_product_path(@product.id) %>
-
-<%= link_to "削除", product_path(@product.id), method: :delete, class: "btn destroy-btn", "data-confirm" => "本当に削除しますか？" %>
-<% end %>
-<% end %>
-
-
-<%= link_to "購入", new_product_order_path(product_id: @product.id)
-	  %>
-<br>
-<br>
-<%= link_to "一覧へもどる", products_path %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div class="col-md-offset-2 col-md-9 col-md-offset-1"> 
+	<%= link_to "購入", new_product_order_path(product_id: @product.id), :class => "btn btn-primary btn-lg btn-block active"
+		  %>
+</div>

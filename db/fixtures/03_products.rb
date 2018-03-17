@@ -18,6 +18,11 @@ index = 1
 	  s.productable_type = "LadiesCategory"
 	  index += 1
 	  s.thumbnail = Rails.root.join("public/images/ladies_thumbnail.jpg").open
+
+		# ProductImage.seed do |i|
+		#   i.image_id = Rails.root.join("public/images/ladies_thumbnail_2.jpg").open
+		# end
+
 	end
 end
 

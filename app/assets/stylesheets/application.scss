@@ -18,6 +18,9 @@
 @import "bootstrap";
 
 @charset "UTF-8";
+@import "slick";
+@import "slick-theme";
+
 
 /* SCSSファイルの読み込み */
 // @import "reset";
@@ -26,34 +29,20 @@
 @import "header";
 
 
-/*body{
-  color: #000;
-  height: 100%;
-  font-family: "Mplus 1p", verdana, arial, helvetica, sans-serif;
-  font-size: 14px;
-  line-height: 18px;
-}*/
-
 /* CSS Document */
-/*body{
-	margin: 0;
-	padding: 0;
-	font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-	background-image: url(../images/body-bg.png);
-}*/
+
 html, body {
 	height: 100%;
 }
-header{
-	width: 100%;
-	background-color: #23628f;
-	background-image: url(../images/header-bg.png);
-	background-position: 50% 50%;
-	border-top: #20567d 10px solid;
-	box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
-	position: relative;
-	z-index: 10;
+
+/*共通*/
+.form_btn_box{
+    background: #ea352d;
+    color: #fff;
 }
+
+/*＿＿＿＿*/
+
 .header-contents{
 	box-sizing:border-box;
 	max-width: 960px;
@@ -77,18 +66,7 @@ header{
 	font-size: 14px;
 	font-weight: normal;
 }
-.main-wrapper{
-	position: relative;
-	box-sizing:border-box;
-	max-width: 960px;
-	margin: 0 auto;
-	padding:30px 30px;
-	background-color: #fff;
-	border-left: #dadada 1px solid;
-	border-right: #dadada 1px solid;
-	min-height: 80%;
-	min-height: calc(100% - 200px);
-}
+
 footer{
 	box-sizing:border-box;
 	max-width: 960px;

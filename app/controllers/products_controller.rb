@@ -39,11 +39,11 @@ class ProductsController < ApplicationController
 			
 		elsif params[:mens_category_id].presence
 			@mens_category = MensCategory.find(params[:mens_category_id])
-			  @products = @mens_category.products
+			@products = @mens_category.products
 			
 		elsif params[:handmade_category_id].presence
 			@handmade_category = HandmadeCategory.find(params[:handmade_category_id])
-			  @products = @handmade_category.products
+			@products = @handmade_category.products
 		else
 			@products = Product.all.order(created_at: 'desc')
 		end

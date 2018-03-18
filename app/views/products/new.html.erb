@@ -1,127 +1,155 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="x-ua-compatible" content="IE=edge">
-<title>template</title>
+<div class="container" >
+	<h3 class="text-center">商品の情報を入力</h3>
+	<div class="col-md-offset-2 col-md-8 col-md-offset-2">
+		<div class="row">
+			<%= form_for(@product) do |f| %>
+			<p>出品画像<span class="require_form">必須</span></p>
+			<p>最大4枚までアップロードできます</p>
 
-</head>
-<body>
-<header>
+			  <% if @product.errors.any? %>
+			    <div id="error_explanation">
+			      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this photo from being saved:</h2>
 
-</header>
-<div class="main-wrapper">
-<section>
+			      <ul>
+			      <% @product.errors.full_messages.each do |message| %>
+			        <li><%= message %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+			  <% end %>
 
-<h3>商品の情報を入力</h3>
+			    <div class="field">
+			    <!-- サムネイル -->
+			    <p><%= f.attachment_field :thumbnail %>
 
-<%= form_for(@product) do |f| %>
-<p>出品画像<span class="form-require">必須</span></p>
-<p>最大4枚までアップロードできます</p>
+				<!-- 複数枚投稿可能 -->
+				<p><%= f.attachment_field :product_images_images, multiple: true %></p>
+				<p><%= f.attachment_field :product_images_images, multiple: true %></p>
+				<p><%= f.attachment_field :product_images_images, multiple: true %></p>
+				</div>
 
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this photo from being saved:</h2>
+				<p>
+					商品名
+					<span class="require_form">必須
+					</span>
+					<%= f.text_field :name, placeholder: '商品名（必須40文字まで）', class: 'form-control' %>
+				</p>
+				<p>
+					ブランド<%= f.text_field :brand, placeholder: 'ブランド', class: 'form-control' %>
+				</p>
+				<p>
+					商品の説明
+					<span class="require_form">必須
+					</span>
+					<%= f.text_area :detail, class: 'form-control' %>
+				</p>
+		</div>
 
-      <ul>
-      <% @product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+		<div class="row">
+			<div class="col-md-4">
+				<p>商品の詳細</p>
+			</div>
+			<div class="col-md-8">
+				<p>カテゴリー 
+					<span class="require_form">必須
+					</span>
+				</p>
+					<!-- 大きいカテゴリー -->
+					<!-- selectのidをjsで取得 -->
+					<select id="entryPlan" onchange="entryChange1();">
+						<!-- その内部のvalueを変数に保存 -->
+						<option value="select1">レディース</option>
+						<option value="select2">メンズ</option>
+						<option value="select3">ハンドメイド</option>
+					</select>
+				<br>
+				<!-- 表示非表示切り替え -->
+				<div id="firstBox">
+						<!-- 小カテゴリー① -->
+							<%= f.collection_select :productable_id, LadiesCategory.all, :id, :name, class: "ladies"  %>
+							<%= f.hidden_field :productable_type,value: :LadiesCategory %>
+				</div>
+				<!-- 表示非表示切り替え -->
+				<div id="secondBox">
+						<!-- 小カテゴリー② -->
+							<%= f.collection_select :productable_id, MensCategory.all, :id, :name, class: "mens" %>
+							<%= f.hidden_field :productable_type,value: :MensCategory %>
+				</div>
+				<!-- 表示非表示切り替え -->
+				<div id="thirdBox">
+						<!-- 小カテゴリー③ -->
+							<%= f.collection_select :productable_id, HandmadeCategory.all, :id, :name, class: "handmade"  %>
+							<%= f.hidden_field :productable_type,value: :HandmadeCategory %>
+				</div>
+				<br>
 
-    <div class="field">
-    <!-- サムネイル -->
-    <p><%= f.attachment_field :thumbnail %>
+				<p><%= f.label :"商品の状態" %>
+					<span class="require_form">必須
+					</span>
+					<br>
+			  		<%= f.select :status, [["新品、未使用", "new_product"], ["未使用に近い", "unused"], ["目立った傷や汚れなし", "no_noticeable_scratch_or_dirt"], ["やや傷や汚れあり", "slightly_scratched_or_dirty"], ["傷や汚れあり", "scratches_and_dirt"], ["全体的に状態が悪い", "bad"]] ,class:"form-control" %>
+				</p>
+			</div>
+		</div>
 
-	<!-- 複数枚投稿可能 -->
-	<p><%= f.attachment_field :product_images_images, multiple: true %></p>
-	<p><%= f.attachment_field :product_images_images, multiple: true %></p>
-	<p><%= f.attachment_field :product_images_images, multiple: true %></p>
+		<div class="row">
+			<div class="col-md-4">
+				<p>配送について</p>
+			</div>
+			<div class="col-md-8">
+
+				<p><%= f.label :"配送料の負担" %>
+					<span class="require_form">必須
+					</span>
+					<br>
+			  		<%= f.select :burden_of_shipping_fee, [["送料込み(出品者負担)", "postage_included"], ["着払い（購入者負担）", "freight_collect"]] ,class:"form-control" %>
+				</p>
+				<p><%= f.label :"配送方法" %>
+					<span class="require_form">必須
+					</span>
+					<br>
+					<%= f.select :shipping_method, [["らくらく便", "small"], ["ゆうゆう便", "medium"], ["大型便", "big"]] ,class:"form-control" %>
+				</p>
+				<p>
+					<%= f.label :"配送元地域" %>
+					<span class="require_form">必須
+					</span>
+					<br>
+					<%= f.collection_select :region_id, Region.all, :id, :name %>
+				</p>
+				<p><%= f.label :"発送日の目安" %>
+					<span class="require_form">必須
+					</span>
+					<br>
+					<%= f.select :estimated_shipping_date, [["１〜２日で発送", "_2days"], ["２〜３日で発送", "_3days"], ["４〜７日で発送", "_7days"]] ,class:"form-control" %>
+				</p>
+			</div>
+		</div>	
+
+		<div class="row">
+			<div class="col-md-4">
+				<p>販売価格(300〜9,999,999)</p>
+			</div>
+			<div class="col-md-8">
+				<p>
+					価格
+					<span class="require_form">必須
+					</span>
+		<div class="row">
+			¥<%= f.text_field :price, placeholder: '数字半角入力', class: 'form-control' %>
+		</div>
+				</p>
+			</div>
+
+		<p> <%= f.submit '出品する',class: "btn btn-lg btn-block form_btn_box" %> </p>
+
+		<% end %>
+		<div class="col-md-offset-1 col-md-10 col-md-offset-1 ">
+		<%= link_to "もどる", products_path,class: "btn btn-default btn-lg btn-block" %>
+		</div>
 	</div>
-
-	<p>
-		商品名<span class="form-require">必須</span>：<%= f.text_field :name, placeholder: '商品名（必須40文字まで）' %>
-	</p>
-
-	<p>
-		ブランド：<%= f.text_field :brand, placeholder: 'ブランド' %>
-	</p>
-	<p>
-		商品の説明<span class="form-require">必須</span>：<%= f.text_area :detail %>
-	
-	</p>
-	<p>商品の詳細</p>
-	<p><%= f.label :"商品の状態：" %>
-  		<%= f.select :status, [["新品、未使用", "new_product"], ["未使用に近い", "unused"], ["目立った傷や汚れなし", "no_noticeable_scratch_or_dirt"], ["やや傷や汚れあり", "slightly_scratched_or_dirty"], ["傷や汚れあり", "scratches_and_dirt"], ["全体的に状態が悪い", "bad"]] ,class:"form-control" %>
-	</p>	
-
-	<p>配送について</p>
-	<p><%= f.label :"配送料の負担：" %>
-  		<%= f.select :burden_of_shipping_fee, [["送料込み(出品者負担)", "postage_included"], ["着払い（購入者負担）", "freight_collect"]] ,class:"form-control" %>
-	</p>
-	<p><%= f.label :"配送方法：" %>
-		<%= f.select :shipping_method, [["らくらく便", "small"], ["ゆうゆう便", "medium"], ["大型便", "big"]] ,class:"form-control" %>
-
-	</p>
-	<p>
-		<%= f.label :"配送元地域：" %>
-		<%= f.collection_select :region_id, Region.all, :id, :name %>
-
-
-	</p>
-	<p><%= f.label :"発送日の目安：" %>
-		<%= f.select :estimated_shipping_date, [["１〜２日で発送", "_2days"], ["２〜３日で発送", "_3days"], ["４〜７日で発送", "_7days"]] ,class:"form-control" %>
-	</p>	
-
-	<p>販売価格(300〜9,999,999)</p>
-	<p>
-		価格：<%= f.text_field :price, placeholder: '数字半角入力' %>円
-	
-	</p>
-
-		<!-- 大きいカテゴリー -->
-		<!-- selectのidをjsで取得 -->
-		<select id="entryPlan" onchange="entryChange1();">
-			<!-- その内部のvalueを変数に保存 -->
-			<option value="select1">レディース</option>
-			<option value="select2">メンズ</option>
-			<option value="select3">ハンドメイド</option>
-		</select>
-
-<!-- 表示非表示切り替え -->
-<div id="firstBox">
-		<!-- 小カテゴリー① -->
-			<%= f.collection_select :productable_id, LadiesCategory.all, :id, :name, class: "ladies"  %>
-			<%= f.hidden_field :productable_type,value: :LadiesCategory %>
 </div>
-
-<!-- 表示非表示切り替え -->
-<div id="secondBox">
-		<!-- 小カテゴリー② -->
-			<%= f.collection_select :productable_id, MensCategory.all, :id, :name, class: "mens" %>
-			<%= f.hidden_field :productable_type,value: :MensCategory %>
-</div>
-
-<!-- 表示非表示切り替え -->
-<div id="thirdBox">
-		<!-- 小カテゴリー③ -->
-			<%= f.collection_select :productable_id, HandmadeCategory.all, :id, :name, class: "handmade"  %>
-			<%= f.hidden_field :productable_type,value: :HandmadeCategory %>
-</div>
-
-	<p> <%= f.submit '出品する' %> </p>	
-
-<% end %>
-
-<%= link_to "もどる", products_path %>
-
-
-</section>
-</div>
-
+<!-- </section> -->
 <script>
 // selectのところで関数を呼び出し
 function entryChange1(){
@@ -161,8 +189,4 @@ $(function(){
 };
 //オンロードさせ、リロード時に選択を保持
 window.onload = entryChange1;
-
 </script>
-
-</body>
-</html>

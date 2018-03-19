@@ -8,6 +8,9 @@
 <span><%= f.burden_of_shipping_fee %> </span>
 
 <h2>商品画像</h2>
+<%#= image_tag attachment_url(@user, :thumbnail, :fill, 300, 300, format: "jpg") %>
+              <%#= attachment_image_tag f, :item_image, :fill, 200, 200, format: 'jpg' %>
+              </p>
 
 	<p><%= f.thumbnail %></p>
 	<p><%#= image_tag f.thumbnail %></p>

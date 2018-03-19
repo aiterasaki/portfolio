@@ -14,33 +14,12 @@
 <div class="col-md-12"> 
  
 		<div class="col-md-offset-2 col-md-4"> 
-			＿＿＿＿
 
-<!-- <ul id="slider-nav">
-    <li><img src="/images/hand_made.jpg"></li>
-    <li><img src="/images/hand_made.jpg"></li>
-    <li><img src="/images/hand_made.jpg"></li>
-    <li><img src="/images/hand_made.jpg"></li>
-</ul> -->
-			______
-<!-- 
-			<div class="slider slider-for">
-				<div><a href="#"><img src="/images/hand_made.jpg"></a></div>
-				<div><a href="#"><img src="/images/mens.jpg"></a></div>
-				<div><a href="#"><img src="/images/hand_made.jpg"></a></div>
-				<div><a href="#"><img src="/images/mens.jpg"></a></div>
-			</div>
 
-			<div class="slider slider-nav">
-				<div><img src="/images/hand_made.jpg"></div>
-				<div><img src="/images/mens.jpg"></div>
-				<div><img src="/images/hand_made.jpg"></div>
-				<div><img src="/images/mens.jpg"></div>
-			</div> -->
-			＿＿＿＿
 			<p>
 			<%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %>
 			</p>
+			<%# binding.pry %>
 			<p>
 			<% @product.product_images.each do |image| %>
 			<%= attachment_image_tag image, :image, :fill, 290, 290 %>

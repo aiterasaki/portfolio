@@ -11,11 +11,30 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require jquery
-//= require jquery_ujs
-//= require_tree .
 //= require bootstrap-sprockets
+//= require jquery_ujs
+//= require turbolinks
+//= require_tree .
+//= require slick
 
 
+$(function(){
 
+	 $('.slider-for').slick({
+	  slidesToShow: 1,
+	  slidesToScroll: 1,
+	  arrows: false,
+	  fade: true,
+	  asNavFor: '.slider-nav'
+	});
+	$('.slider-nav').slick({
+	  slidesToShow: 3,
+	  slidesToScroll: 1,
+	  asNavFor: '.slider-for',
+	  dots: true,
+	  centerMode: true,
+	  focusOnSelect: true
+	});
+
+});

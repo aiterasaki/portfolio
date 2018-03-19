@@ -19,7 +19,7 @@ index = 1
 	  index += 1
 	  s.thumbnail = Rails.root.join("public/images/ladies_thumbnail.jpg").open
 		
-		# ProductImage.seed do |i|
+		# s.ProductImage.seed do |i|
 		# 	i.image = Rails.root.join("public/images/ladies_thumbnail_2.jpg").open
 		# end
 

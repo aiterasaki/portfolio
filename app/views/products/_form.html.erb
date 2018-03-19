@@ -139,12 +139,12 @@
 		</div>
 				</p>
 			</div>
-<% if request.path_info = edit_product_path %>
+<%# if request.path_info = edit_product_path %>
 
-		<p> <%= f.submit '修正する',class: "btn btn-lg btn-block form_btn_box" %> </p>
-<% else %>
+		<p> <%#= f.submit '修正する',class: "btn btn-lg btn-block form_btn_box" %> </p>
+<%# else %>
 		<p> <%= f.submit '出品する',class: "btn btn-lg btn-block form_btn_box" %> </p>
-<% end %>
+<%# end %>
 		<% end %>
 		<div class="col-md-offset-1 col-md-10 col-md-offset-1 ">
 		<%= link_to "もどる", products_path,class: "btn btn-default btn-lg btn-block" %>

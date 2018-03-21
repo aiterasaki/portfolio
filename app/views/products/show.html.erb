@@ -9,11 +9,8 @@
 				</div>
 
 				<% @product.product_images.each do |image| %>
-					<div><%= attachment_image_tag image, :image, :fill, 290, 290 %>
-					</div>
-					<div><%= attachment_image_tag image, :image, :fill, 290, 290 %>
-					</div>
-					<div><%= attachment_image_tag image, :image, :fill, 290, 290 %>
+					<div> 
+						<%= attachment_image_tag image, :image, :fill, 290, 290 %>
 					</div>
 				<% end %>
 			</div>

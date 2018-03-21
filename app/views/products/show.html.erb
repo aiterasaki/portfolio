@@ -3,37 +3,30 @@
 </div>
 
 <div class="col-md-12"> 
- 
 		<div class="col-md-offset-2 col-md-4"> 
-			
-<h2>TEST</h2>
-				<div class="slider slider-for">
-					<div><h3>１<%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %></h3></div>
-
-<% @product.product_images.each do |image| %>
-
-					<div><h3>２<%= attachment_image_tag image, :image, :fill, 290, 290 %></h3></div>
-
-					<div><h3>３<%= attachment_image_tag image, :image, :fill, 290, 290 %></h3></div>
-					<div><h3>４<%= attachment_image_tag image, :image, :fill, 290, 290 %></h3></div>
-
-<% end %>
+			<div class="slider slider-for">
+				<div><%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %>
 				</div>
 
-				<div class="slider slider-nav">
-					<div><h3>１<%= attachment_image_tag @product, :thumbnail, :fill, 70, 70, format: 'jpeg' %></h3></div>
+				<% @product.product_images.each do |image| %>
+					<div><%= attachment_image_tag image, :image, :fill, 290, 290 %>
+					</div>
+					<div><%= attachment_image_tag image, :image, :fill, 290, 290 %>
+					</div>
+					<div><%= attachment_image_tag image, :image, :fill, 290, 290 %>
+					</div>
+				<% end %>
+			</div>
 
-<% @product.product_images.each do |image| %>
+			<div class="slider slider-nav">
+				<div><%= attachment_image_tag @product, :thumbnail, :fill, 70, 70, format: 'jpeg' %>
+				</div>
 
-					<div><h3>２<%= attachment_image_tag image, :image, :fill, 70, 70 %></h3></div>
-
-					<div><h3>３<%= attachment_image_tag image, :image, :fill, 70, 70 %></h3></div>
-					<div><h3>４<%= attachment_image_tag image, :image, :fill, 70, 70 %></h3></div>
-
-<% end %>
-
-				</div>	
-
+				<% @product.product_images.each do |image| %>
+					<div><%= attachment_image_tag image, :image, :fill, 70, 70 %>
+					</div>
+				<% end %>
+			</div>
 		</div>
 
 		<div class="col-md-5"> 

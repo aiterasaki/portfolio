@@ -102,3 +102,23 @@
 	<%= link_to "購入", new_product_order_path(product_id: @product.id),class:"form_btn_box btn btn-lg btn-block"
 		  %>
 </div>
+
+<script type="text/javascript">
+	$(function(){
+		 $('.slider-for').slick({
+		  slidesToShow: 1,
+		  slidesToScroll: 1,
+		  arrows: false,
+		  fade: true,
+		  asNavFor: '.slider-nav'
+		});
+		$('.slider-nav').slick({
+		  slidesToShow: 3,
+		  slidesToScroll: 1,
+		  asNavFor: '.slider-for',
+		  dots: true,
+		  centerMode: true,
+		  focusOnSelect: true
+		});
+	});
+</script>

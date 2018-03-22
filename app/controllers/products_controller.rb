@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
 		@product = Product.new
 		@product.product_images.build
 		@productable = @product.productable
-
+# binding.pry
 	end
 
 	def create

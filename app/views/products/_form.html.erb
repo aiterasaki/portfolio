@@ -1,31 +1,35 @@
 <div class="container" >
 	<div class="col-md-offset-2 col-md-8 col-md-offset-2">
-		<div class="row">
-			<%= form_for(@product) do |f| %>
-			<p>出品画像<span class="require_form">必須</span></p>
-			<p>最大4枚までアップロードできます</p>
 
-			  <% if @product.errors.any? %>
-			    <div id="error_explanation">
-			      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this photo from being saved:</h2>
+		<%= form_for(@product) do |f| %>
+		<p>出品画像<span class="require_form">必須</span></p>
+		<p>最大4枚までアップロードできます</p>
 
-			      <ul>
-			      <% @product.errors.full_messages.each do |message| %>
-			        <li><%= message %></li>
-			      <% end %>
-			      </ul>
-			    </div>
-			  <% end %>
+		  <% if @product.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this photo from being saved:
+		      </h2>
+		      <ul>
+		      <% @product.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
 
-			    <div class="field">
+		    <div class="field">
 			    <!-- サムネイル -->
 			    <p><%= f.attachment_field :thumbnail %>
+			    </p>
 
 				<!-- 複数枚投稿可能 -->
-				<p><%= f.attachment_field :product_images_images, multiple: true %></p>
-				<p><%= f.attachment_field :product_images_images, multiple: true %></p>
-				<p><%= f.attachment_field :product_images_images, multiple: true %></p>
-				</div>
+				<p><%= f.attachment_field :product_images_images, multiple: true %>
+				</p>
+				<p><%= f.attachment_field :product_images_images, multiple: true %>
+				</p>
+				<p><%= f.attachment_field :product_images_images, multiple: true %>
+				</p>
+			</div>
 
 				<p>
 					商品名
@@ -42,12 +46,11 @@
 					</span>
 					<%= f.text_area :detail, class: 'form-control' %>
 				</p>
-		</div>
 
-		<div class="row">
 			<div class="col-md-4">
 				<p>商品の詳細</p>
 			</div>
+
 			<div class="col-md-8">
 				<p>カテゴリー 
 					<span class="require_form">必須
@@ -89,9 +92,7 @@
 			  		<%= f.select :status, [["新品、未使用", "new_product"], ["未使用に近い", "unused"], ["目立った傷や汚れなし", "no_noticeable_scratch_or_dirt"], ["やや傷や汚れあり", "slightly_scratched_or_dirty"], ["傷や汚れあり", "scratches_and_dirt"], ["全体的に状態が悪い", "bad"]] ,class:"form-control" %>
 				</p>
 			</div>
-		</div>
 
-		<div class="row">
 			<div class="col-md-4">
 				<p>配送について</p>
 			</div>
@@ -123,9 +124,7 @@
 					<%= f.select :estimated_shipping_date, [["１〜２日で発送", "_2days"], ["２〜３日で発送", "_3days"], ["４〜７日で発送", "_7days"]] ,class:"form-control" %>
 				</p>
 			</div>
-		</div>	
 
-		<div class="row">
 			<div class="col-md-4">
 				<p>販売価格(300〜9,999,999)</p>
 			</div>
@@ -134,25 +133,34 @@
 					価格
 					<span class="require_form">必須
 					</span>
-		<div class="row">
-			¥<%= f.text_field :price, placeholder: '数字半角入力', class: 'form-control' %>
-		</div>
+					<!-- <div class="row"> -->
+						¥<%= f.text_field :price, placeholder: '数字半角入力', class: 'form-control' %>
+					<!-- </div> -->
 				</p>
 			</div>
-<%# if request.path_info = edit_product_path %>
+
+<%# if edit_product_path %>
 
 		<p> <%#= f.submit '修正する',class: "btn btn-lg btn-block form_btn_box" %> </p>
 <%# else %>
+
+<%# bindig.pry %>
+  <div class="actions">
 		<p> <%= f.submit '出品する',class: "btn btn-lg btn-block form_btn_box" %> </p>
+  </div>
+		
+<%#= f.submit '出品する'%>
 <%# end %>
-		<% end %>
-		<div class="col-md-offset-1 col-md-10 col-md-offset-1 ">
-		<%= link_to "もどる", products_path,class: "btn btn-default btn-lg btn-block" %>
-		</div>
+
+			<% end %>
+			<div class="col-md-offset-1 col-md-10 col-md-offset-1 ">
+			<%= link_to "もどる", products_path,class: "btn btn-default btn-lg btn-block" %>
+			</div>
 	</div>
 </div>
 <!-- </section> -->
-<script>
+<script type="text/javascript">
+
 // selectのところで関数を呼び出し
 function entryChange1(){
 	// selectの中のoptionのvalueを取得し、変数に入れる

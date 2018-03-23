@@ -51,6 +51,24 @@ class ProductsController < ApplicationController
 		@ladies_categories = LadiesCategory.all
 		@mens_categories = MensCategory.all
 		@handmade_categories = HandmadeCategory.all
+
+		# パラメータとして名前か性別を受け取っている場合は絞って検索する
+		if params[:name].present?
+		@products = @products.get_by_name params[:name]
+		end
+		if params[:brand].present?
+		@products = @products.get_by_brand params[:brand]
+		end
+		if params[:status].present?
+		@products = @products.get_by_status params[:status]
+		end
+		if params[:burden_of_shipping_fee].present?
+		@products = @products.get_by_burden_of_shipping_fee params[:burden_of_shipping_fee]
+		end
+
+		if params[:sell_flg].present?
+		@products = @products.get_by_sell_flg params[:sell_flg]
+		end
 	end
 
 	def show

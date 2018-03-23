@@ -64,4 +64,31 @@ class Product < ApplicationRecord
 	# 							     ４〜７日で発送: 2 
 	# 							     }
 
+# _____________
+
+#商品名による絞り込み 
+scope :get_by_name, ->(name) {
+where("name like ?", "%#{name}%")
+}
+#ブランド名による絞り込み
+scope :get_by_brand, ->(brand) {
+where(brand: brand)
+}
+# 商品の状態による絞り込み
+scope :get_by_status, ->(status) {
+where(status: status)
+}
+#配送料の負担による絞り込み
+scope :get_by_burden_of_shipping_fee, ->(burden_of_shipping_fee) {
+where(burden_of_shipping_fee: burden_of_shipping_fee)
+}
+
+#販売状況による絞り込み
+scope :get_by_sell_flg, ->(sell_flg) {
+where(sell_flg: sell_flg)
+}
+
+# _____________
+
+
 end

@@ -71,8 +71,10 @@ class ProductsController < ApplicationController
 
 		redirect_to product_path(@product.id)
 
-		@product.productable_id = params [:productable_id]
-	# binding.pry	
+# binding.pry
+		@product.productable_id =  Product.find_by_id (params[:id])
+		# @product.productable_id = Product.find(params [:productable_id])
+		
 	end
 
 	def destroy

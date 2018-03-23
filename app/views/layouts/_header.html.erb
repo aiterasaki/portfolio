@@ -7,12 +7,34 @@
       <div class="row">
             <div class="col-sm-9 col-sm-offset-1">
                 <div class="input-group stylish-input-group">
-                    <input type="text" class="form-control"  placeholder="Search" >
-                    <span class="input-group-addon">
+_____
+
+<div > 
+<%= form_tag(root_path, method: "get") do %>
+
+<%= text_field_tag :search , params[:search] %>
+
+<%#= label_tag :name, "キーワード" %>
+<%#= text_field_tag :name , params[:name] %>
+
+<%#= label_tag :brand, "ブランド名" %>
+<%#= text_field_tag :brand, params[:brand] %>
+
+<%= submit_tag "検索"  %>
+
+<% end %>
+</div>
+
+
+_____
+
+                  
+<!--                     <input type="text" class="form-control"  placeholder="Search" > -->
+                    <!-- <span class="input-group-addon"> -->
                         <button type="submit">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>  
-                    </span>
+                    <!-- </span> -->
                 </div>
             </div>
       </div>

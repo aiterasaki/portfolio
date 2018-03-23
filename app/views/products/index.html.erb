@@ -56,42 +56,40 @@
   </div>
 </div>
 
-_________________
 
+<!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+         <div class="list-group">
+_________________
 <div> 
 <%= form_tag(root_path, method: "get") do %>
 
-<%= label_tag :name, "名前" %>
+<%= label_tag :name, "キーワード" %>
 <%= text_field_tag :name, params[:name] %>
 
 <%= label_tag :brand, "ブランド名" %>
 <%= text_field_tag :brand, params[:brand] %>
 
 <%= label_tag :status, "商品の状態" %>
-<%= select_tag :status, options_for_select(Product.statuses), include_blank: true %>
+<%= select_tag :status, options_for_select([["新品、未使用", "new_product"], ["未使用に近い", "unused"], ["目立った傷や汚れなし", "no_noticeable_scratch_or_dirt"], ["やや傷や汚れあり", "slightly_scratched_or_dirty"], ["傷や汚れあり", "scratches_and_dirt"], ["全体的に状態が悪い", "bad"]]), include_blank: true %>
 
 <%= label_tag :burden_of_shipping_fee, "配送料の負担" %>
-<%= select_tag :burden_of_shipping_fee, options_for_select(Product.burden_of_shipping_fees), include_blank: true %>
+<%= select_tag :burden_of_shipping_fee, options_for_select([["送料込み(出品者負担)", "postage_included"], ["着払い（購入者負担）", "freight_collect"]]), include_blank: true %>
 
 <%= label_tag :sell_flg, "販売状況" %>
-<%#= select_tag :sell_flg, options_for_select([["すべて", ], ["販売中", true], ["売り切れ", false]], :sell_flg) %>
-
-
-<%#= collection_select :sell_flg, options_for_select(Product.sell_flgs), include_blank: true %>
-
+<%= select_tag :sell_flg, options_for_select([["すべて",""], ["販売中", "t"], ["売り切れ", "f"]], :sell_flg) %>
+<br>
 <%= submit_tag "検索" %>
+
 <% end %>
 </div>
 
-
 __________________
-<!-- Page Content -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-2">
-          <h1 class="my-4">Shop Name
-          </h1>
-          <div class="list-group">
+
+
+<!--           <div class="list-group"> -->
             <a href="#" class="list-group-item">レディース
             </a>
 

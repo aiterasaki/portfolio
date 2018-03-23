@@ -7,7 +7,6 @@ class ProductsController < ApplicationController
 		@product = Product.new
 		@product.product_images.build
 		@productable = @product.productable
-# binding.pry
 	end
 
 	def create
@@ -33,6 +32,10 @@ class ProductsController < ApplicationController
 
 
 	def index
+# @products = Product.where(activated: true).paginate(page: params[:page]).search(params[:search])
+
+# @products = Product.search(params[:search])
+
 		if params[:ladies_category_id].presence
 			@ladies_category = LadiesCategory.find(params[:ladies_category_id])
 			@products = @ladies_category.products
@@ -52,7 +55,7 @@ class ProductsController < ApplicationController
 		@mens_categories = MensCategory.all
 		@handmade_categories = HandmadeCategory.all
 
-		# パラメータとして名前か性別を受け取っている場合は絞って検索する
+		# パラメータとして受け取っている場合は絞って検索する
 		if params[:name].present?
 		@products = @products.get_by_name params[:name]
 		end

@@ -10,15 +10,9 @@
 _____
 
 <div > 
-<%= form_tag(root_path, method: "get") do %>
+<%= form_tag(products_path, method: "get") do  %>
 
 <%= text_field_tag :search , params[:search] %>
-
-<%#= label_tag :name, "キーワード" %>
-<%#= text_field_tag :name , params[:name] %>
-
-<%#= label_tag :brand, "ブランド名" %>
-<%#= text_field_tag :brand, params[:brand] %>
 
 <%= submit_tag "検索"  %>
 

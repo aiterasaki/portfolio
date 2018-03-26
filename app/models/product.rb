@@ -62,22 +62,13 @@ class Product < ApplicationRecord
 	# 							     ４〜７日で発送: 2 
 	# 							     }
 
-  def self.search(search) #ここでのself.はUser.を意味する
-    if search
-      where(['name LIKE ?', "%#{search}%"]) #検索とnameの部分一致を表示。User.は省略
-    else
-      all #全て表示。User.は省略
-    end
-  end
+# headerの検索
 
-# def self.search(search) #self.でクラスメソッドとしている
-#     if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
-#       Product.where(['email LIKE ?', "%#{search}%"])
-#     else
-#       Product.all #全て表示。
-#     end
-#   end
-
+  products = Product.arel_table
+  scope :header_search, -> (search) { Product.where(
+     products[:name].matches("%#{search.downcase}%").
+  or(products[:brand].matches("%#{search.downcase}%"))
+  ) }
 
 #商品名による絞り込み 
 scope :get_by_name, ->(name) {

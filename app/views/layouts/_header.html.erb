@@ -1,42 +1,27 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-      <a class="navbar-brand"><%= link_to "もどる", products_path, id: "logo" %>
-      </a>
-    <nav>
-      <div class="row">
-            <div class="col-sm-9 col-sm-offset-1">
-                <div class="input-group stylish-input-group">
-_____
+  <a class="navbar-brand"><%= link_to "もどる", products_path, id: "logo" %>
+  </a>
+  
+    <div class="col-sm-8 col-sm-offset-2 input-group">
+      <%= form_tag(products_path, method: "get") do  %>
 
-<div > 
-<%= form_tag(products_path, method: "get") do  %>
+          <div class="input-group">
+            <%= text_field_tag :search , params[:search],class: "form-control", placeholder:"キーワードから探す"%>
 
-<%= text_field_tag :search , params[:search] %>
+            <span class="input-group-btn">
+                <%= button_tag class:'btn' do %>
+                  <%= content_tag :span, "", class: "glyphicon glyphicon-search" %>
+                <% end %>
+             </span>
+           </div>
+       <% end %>
+    </div> 
 
-<%= submit_tag "検索"  %>
-
-<% end %>
-</div>
-
-
-_____
-
-                  
-<!--                     <input type="text" class="form-control"  placeholder="Search" > -->
-                    <!-- <span class="input-group-addon"> -->
-                        <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>  
-                    <!-- </span> -->
-                </div>
-            </div>
-      </div>
-
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-" >
         <% if user_signed_in? %>
-        <h2>こんにちは、<%= current_user.nick_name %>さん
-        </h2>
+        <h3>こんにちは、<%= current_user.nick_name %>さん
+        </h3>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
             <%= link_to 'プロフィール変更', edit_user_registration_path %>
             <%= link_to 'マイページ', user_path(current_user) %>
@@ -52,6 +37,5 @@ _____
         <li><%#= link_to "Help",   '#' %></li>
         <li><%#= link_to "Log in", '#' %></li>
       </ul>
-    </nav>
-  </div>
+
 </nav>

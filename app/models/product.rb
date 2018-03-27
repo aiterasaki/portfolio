@@ -62,15 +62,25 @@ class Product < ApplicationRecord
 	# 							     ４〜７日で発送: 2 
 	# 							     }
 
+# headerの検索　arel_tableの場合
+
+  # products = Product.arel_table
+  # scope :header_search, -> (search) { Product.where(
+  #    products[:name].matches("%#{search.downcase}%").
+  # or(products[:brand].matches("%#{search.downcase}%"))
+  # ) }
+
 # headerの検索
 
-  products = Product.arel_table
-  scope :header_search, -> (search) { Product.where(
-     products[:name].matches("%#{search.downcase}%").
-  or(products[:brand].matches("%#{search.downcase}%"))
-  ) }
+scope :header_search, -> (search) { where(
+  "(products.name) LIKE ? OR 
+   (products.brand) LIKE ? ",
+  "%#{search.downcase}%",
+  "%#{search.downcase}%"
+) }
 
 #商品名による絞り込み 
+
 scope :get_by_name, ->(name) {
 where("name like ?", "%#{name}%")
 }
@@ -93,5 +103,3 @@ where(sell_flg: sell_flg)
 }
 
 end
-
-

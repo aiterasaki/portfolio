@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
 
 
 	def index
+
 		if params[:ladies_category_id].presence
 			@ladies_category = LadiesCategory.find(params[:ladies_category_id])
 			@products = @ladies_category.products
@@ -40,6 +41,11 @@ class ProductsController < ApplicationController
 		@mens_categories = MensCategory.all
 		@handmade_categories = HandmadeCategory.all
 
+# ＿＿＿headerの検索分
+		if params[:search].present?
+		@products = @products.header_search params[:search]
+		end
+# ＿＿＿＿＿＿
 		# パラメータとして受け取っている場合は絞って検索する
 		if params[:name].present?
 		@products = @products.get_by_name params[:name]
@@ -57,11 +63,7 @@ class ProductsController < ApplicationController
 		if params[:sell_flg].present?
 		@products = @products.get_by_sell_flg params[:sell_flg]
 		end
-		
-# ＿＿＿header分
-		if params[:search].present?
-		@products = @products.header_search params[:search]
-		end
+
 
 	end
 
@@ -92,23 +94,6 @@ class ProductsController < ApplicationController
 		redirect_to products_path
 	end
 
-	def search
-		# @product = Product.all
-		# if params[:search].present?
-		# @products = @products.header_search params[:search]
-		# end
-		# if params[:brand].present?
-		# @products = @products.header_search params[:brand]
-		# end
-
-		# @product = Array.new
-
-		# if request.post? then
-		# @product = Product.where "name like ?",
-		# '%' + params[:search] + '%'
-		
-		# end
-	end
 
 private
 
@@ -132,11 +117,4 @@ private
 	    )
 	  end
 
-	  # def search_params
-	  # 	params.require(:product).permit(
-	  # 	  :name,
-	  # 	  :brand	
-	  # 	)
-	  	
-	  # end
 end

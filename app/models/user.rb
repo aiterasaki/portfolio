@@ -4,12 +4,10 @@ class User < ApplicationRecord
 	devise :database_authenticatable, :registerable,
 	 :recoverable, :rememberable, :trackable, :validatable
 
-	validates :nick_name, presence: true
-	validates :first_name, presence: true
-	validates :last_name, presence: true
+	validates :nick_name, presence: { message: 'は必須項目です。'}
+	validates :first_name, presence: { message: 'は必須項目です。'}
+	validates :last_name, presence: { message: 'は必須項目です。'}
 	
-	# validates :name, presence: true, uniqueness: true
-
 
 	belongs_to :region
 	

@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
-	  before_action :authenticate_user!, only: [:new, :edit, :update]
-	  before_action :current_user, only: [:edit, :update]
-
+	  # before_action :authenticate_user!, only: [:new, :edit, :update]
+	  # before_action :current_user, only: [:edit, :update]
+	  before_action :admin_user,     only: [:destroy]
 
 	def new
 		@product = Product.new
@@ -68,7 +68,7 @@ class ProductsController < ApplicationController
 	end
 
 	def show
-		@product = Product.find(params[:id])
+		@product = Product.find(params[:admins])
 	end
 
 	def edit

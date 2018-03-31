@@ -18,14 +18,7 @@ Rails.application.routes.draw do
   	end
   	resources :orders,only: :show
 
-	# resources :statuses
-
 	resources :users, :only => [ :show]
 
-
-	# devise_scope :user do
-	# get "sign_in", :to => "users/sessions#new"
-	# get "sign_out", :to => "users/sessions#destroy" 
-	# end
 
 end

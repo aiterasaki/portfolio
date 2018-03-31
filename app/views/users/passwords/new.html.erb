@@ -1,18 +1,24 @@
-<h2>パスワードをお忘れの方</h2>
+<div class="container">
+  <h2 class="text-center">パスワードをお忘れの方
+  </h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+	  <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "ご登録されたメールアドレス" %>
-  </div>
+	  <div class="field">
+	    <%= f.label :メールアドレス %><br />
+	    <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "ご登録されたメールアドレス", class: 'form-control'  %>
+	    <br>
+		<p class="password-reset-info">ご登録されたメールアドレスにパスワード再設定のご案内が送信されます。</p>
 
-  <p class="password-reset-info">ご登録されたメールアドレスにパスワード再設定のご案内が送信されます。</p>
+	  </div>
 
-  <div class="actions">
-    <%= f.submit "送信する" %>
-  </div>
-<% end %>
-<br>
-<%= link_to "もどる", products_path %>
+	  <div class="text-center actions">
+	    <%= f.submit "送信する",class: "btn btn-defalt btn-lg form_btn_box" %>
+	  </div>
+
+	<% end %>
+	<br>
+	<%= link_to "もどる", products_path %>
+
+</div>

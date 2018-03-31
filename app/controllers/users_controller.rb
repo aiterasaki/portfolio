@@ -1,8 +1,4 @@
 class UsersController < ApplicationController
-	# def new
-
-	# redirect_to products_path 
-	# end
 
 	def show
  	 	@user = User.find(params[:id])
@@ -17,8 +13,5 @@ class UsersController < ApplicationController
     	:last_name_kana,
     	:postal_code    	
       )
-
 	end
-
-
 end

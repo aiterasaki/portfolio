@@ -1,7 +1,9 @@
 class Product < ApplicationRecord
-	# layout 'product'
-	# validates :detail, presence: true
-	validates :price, presence: true
+	validates :price, numericality:  { greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999 }
+
+# ↑バリデーション　動作確認ずみ
+
+
 	# validates_presence_of :name
 	validates_presence_of :thumbnail
   	attachment :thumbnail

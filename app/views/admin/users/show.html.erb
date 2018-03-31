@@ -1,0 +1,41 @@
+<div class="container">
+  <h2 class="text-center">出品した商品一覧
+  </h2>
+<br>
+	<% @user.products.each do |f| %>
+<span><%= f.name %> </span>
+<span>¥<%= f.price %> </span>
+<span><%= f.burden_of_shipping_fee %> </span>
+
+<h2>商品画像</h2>
+<%#= image_tag attachment_url(@user, :thumbnail, :fill, 300, 300, format: "jpg") %>
+              <%#= attachment_image_tag f, :item_image, :fill, 200, 200, format: 'jpg' %>
+              </p>
+
+	<p><%= f.thumbnail %></p>
+	<p><%#= image_tag f.thumbnail %></p>
+
+ <p><%#= f.attachment_field :thumbnails, multiple: true %></p>
+
+
+ <p><%#= f.attachment_field :product_images_images, multiple: true %></p>
+
+     <%#= attachment_image_tag thumbnail, :thumbnail, :fill, 200, 200 %>
+
+     <%#= attachment_image_tag image, :image, :fill, 200, 200 %>
+
+<p>
+  <%= attachment_image_tag @product, :thumbnail, :fill, 300, 300, format: 'jpeg' %>
+</p>
+
+<p>
+  <%#= attachment_image_tag thumbnail, :thumbnail, :fill, 300, 300, format: 'jpeg' %>
+</p>
+
+	<% end %>
+
+</div>		
+
+
+<br>
+<%= link_to "もどる", products_path  %>

@@ -1,3 +1,14 @@
+# User.seed do |s|
+# 	s.id = 1
+# 	s.nick_name = "管理者用"
+# 	s.email = "admin@admin.com"
+# 	s.password =              "000000"
+# 	s.password_confirmation = "000000"
+# 	s.admin_flg = "true"
+	
+			 
+# end
+
 User.seed do |s|
 	s.id = 2
 	s.nick_name = "テスト確認用"
@@ -11,7 +22,7 @@ User.seed do |s|
 	s.address_street = "中央区"
 	s.address_building = "１−１−２"
 	s.telephone = "090-1234-5678"
-	s.email = "test@test"
+	s.email = "test@test.com"
 	s.password =              "000000"
 	s.password_confirmation = "000000"
 			 

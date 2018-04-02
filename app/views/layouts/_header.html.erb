@@ -18,24 +18,19 @@
        <% end %>
     </div> 
 
-      <ul class="nav navbar-nav navbar-" >
-        <% if user_signed_in? %>
-        <h3>こんにちは、<%= current_user.nick_name %>さん
-        </h3>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-            <%= link_to 'プロフィール変更', edit_user_registration_path %>
-            <%= link_to 'マイページ', user_path(current_user) %>
-        <h2><%= link_to '出品する',new_product_path ,class:'header-menu' %>
-        </h2>
+     <div class="col-sm-5 col-sm-offset-7">
+      <% if user_signed_in? %>
+      <h3 class="login_nick_name">こんにちは、<%= current_user.nick_name %>さん
+      </h3>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <%= link_to 'プロフィール変更', edit_user_registration_path %>
+          <%= link_to 'マイページ', user_path(current_user) %>
+      <h2><%= link_to '出品する',new_product_path ,class:'header-menu' %>
+      </h2>
 
-        <% else %>
-            <%= link_to "新規登録", new_user_registration_path %> |
-            <%= link_to "ログイン", new_user_session_path %>
-        <% end %>
-
-        <li><%#= link_to "Home",   '#' %></li>
-        <li><%#= link_to "Help",   '#' %></li>
-        <li><%#= link_to "Log in", '#' %></li>
-      </ul>
-
+      <% else %>
+          <%= link_to "新規登録", new_user_registration_path %> |
+          <%= link_to "ログイン", new_user_session_path %>
+      <% end %>
+    </div>
 </nav>

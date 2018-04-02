@@ -11,11 +11,13 @@ class Product < ApplicationRecord
   	# 複数関連しているテーブルとのアソシエーションの記述
   	# つまり、ladies,mens,handmadeテーブルたち
   	belongs_to :productable, polymorphic: true
-
+ 
 	belongs_to :region	
 	belongs_to :user
 
 	has_many :product_orders
+	has_many :orders, through: :product_orders
+
 	has_many :product_images, dependent: :destroy
   	accepts_attachments_for :product_images, attachment: :image
 

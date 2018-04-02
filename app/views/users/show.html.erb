@@ -1,41 +1,184 @@
-<div class="container">
-  <h2 class="text-center">出品した商品一覧
+<h2 class="text-center">出品履歴
   </h2>
+
+    <% @user.products.each do |product| %>
+<div class="col-md-12">
+  <div class="col-md-offset-2 col-md-4"> 
+
+    <div class="slider slider-for">
+      <div class ="product_image"><%= image_tag attachment_url(product, :thumbnail, :fill, 290, 290) %></div>
+      <% product.product_images.each do |image| %>
+      <div> 
+        <%= attachment_image_tag image, :image, :fill, 290, 290 %>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="slider slider-nav">
+        <div class ="product_image"><%= image_tag attachment_url(product, :thumbnail, :fill, 70, 70) %></div>
+      <% product.product_images.each do |image| %>
+      <div> 
+        <%= attachment_image_tag image, :image, :fill, 70, 70 %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-5"> 
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th scope="row">商品名
+          </th>
+          <td><%= product.name %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">ブランド
+          </th>
+          <td><%= product.brand %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">商品の詳細
+          </th>
+          <td><%= product.detail %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">商品の状態
+          </th>
+          <td><%= product.status_i18n %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">配送料の負担
+          </th>
+          <td><%= product.burden_of_shipping_fee_i18n %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">配送方法
+          </th>
+          <td><%= product.shipping_method_i18n %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">配送元地域
+          </th>
+          <td><%= product.region.name %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">発送日の目安
+          </th>
+          <td><%= product.estimated_shipping_date_i18n %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">カテゴリー 
+          </th>
+          <td><%= product.productable.category.name %>/
+              <%= product.productable.name %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">値段
+          </th>
+          <td>￥<%= product.price %>(税込)
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">販売中
+          </th>
+          <td><%= product.sell_flg %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+    <% end %>
+
+
+
+
+
+<h2 class="text-center">購入履歴
+  </h2>
+<!-- <div class="col-md-12"> -->
+<div class="container">
+
+<% @user.products.each do |product|%>
+<%= product.brand %>
+<%= product.name %>
+<%= product.price %>
+
+<% product.product_orders.each do |product_order|%>
+
+<%= product_order.order.first_name%>
+<%= product_order.order.last_name%>様
+
+<%# product_order.orders.each do |order|%>
+
+<%#= order.first_name%>
+
+<%# end %>
+
+
+<% end %>
 <br>
-	<% @user.products.each do |f| %>
-<span><%= f.name %> </span>
-<span>¥<%= f.price %> </span>
-<span><%= f.burden_of_shipping_fee %> </span>
-
-<h2>商品画像</h2>
-<%#= image_tag attachment_url(@user, :thumbnail, :fill, 300, 300, format: "jpg") %>
-              <%#= attachment_image_tag f, :item_image, :fill, 200, 200, format: 'jpg' %>
-              </p>
-
-	<p><%= f.thumbnail %></p>
-	<p><%#= image_tag f.thumbnail %></p>
-
- <p><%#= f.attachment_field :thumbnails, multiple: true %></p>
+<% end %>
 
 
- <p><%#= f.attachment_field :product_images_images, multiple: true %></p>
+<!-- ___________________ -->
 
-     <%#= attachment_image_tag thumbnail, :thumbnail, :fill, 200, 200 %>
+  <% @user.orders.each do |order| %>
+<%#= binding.pry%>
+    <% order.product_orders.each do |product_order| %>
+      <%= product_order.product.name %>
+      <%= product_order.product.price %>
 
-     <%#= attachment_image_tag image, :image, :fill, 200, 200 %>
+    <% product_order.products.each do |product| %>
+    <p>
+                <%#= attachment_image_tag product_order.product, :thumbnail, :fill, 200, 200, format: 'jpg' %>
+                </p>
+      <%= product.name %>
+      <%= product.price %>
+    <% end %>
 
-<p>
-  <%= attachment_image_tag @product, :thumbnail, :fill, 300, 300, format: 'jpeg' %>
-</p>
+    <% end %>
+    <%= order.first_name%>
+    <%= order.last_name%>様
+    〒<%= order.postal_code%>
+    <%= order.region.name%>
+    <%= order.address_city%>
+    <%= order.address_street%>
+    <%= order.address_building%>
+    <br>
+  <% end %>
 
-<p>
-  <%#= attachment_image_tag thumbnail, :thumbnail, :fill, 300, 300, format: 'jpeg' %>
-</p>
-
-	<% end %>
-
-</div>		
+</div>
 
 
-<br>
 <%= link_to "もどる", products_path  %>
+
+<script type="text/javascript">
+  $(function(){
+     $('.slider-for').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      fade: true,
+      asNavFor: '.slider-nav'
+    });
+    $('.slider-nav').slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      asNavFor: '.slider-for',
+      dots: true,
+      centerMode: true,
+      focusOnSelect: true
+    });
+  });
+</script>

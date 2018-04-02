@@ -1,18 +1,38 @@
 <h3 class="text-center">取引画面(確認用)</h3>
 
       <!-- <div class="col-md-12">  -->
-        <div class="col-md-offset-2 col-md-4"> 
-          <p>
-            <%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %>
-          </p>
-          <h3><%= @product.name %>
-          </h3>
+        <div class="col-md-offset-2 col-md-4">
+          <div class="slider slider-for"> 
+            <p>
+              <%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %>
+            </p>
+
+            <% @product.product_images.each do |image| %>
+            <div> 
+            <%= attachment_image_tag image, :image, :fill, 290, 290 %>
+            </div>
+            <% end %>
+          </div>
+
+          <div class="slider slider-nav">
+            <p>
+              <%= attachment_image_tag @product, :thumbnail, :fill, 70, 70, format: 'jpeg' %>
+            </p>
+          <% @product.product_images.each do |image| %>
+          <div> 
+          <%= attachment_image_tag image, :image, :fill, 70, 70 %>
+          </div>
+          <% end %>
+          </div>
         </div>
 
         <div class="col-md-6">
+            <h3><%= @product.name %>
+            </h3>
+
             <h2>支払い方法
             </h2>	
-            <%= form_for [@product, @order] do |f| %>
+            <%= form_for @order, url: product_orders_path do |f| %>
               <div class="field">
                 <p><%#= f.label :"支払い方法：" %>
                     <%= f.select :method_of_payment, [["クレジットカード払い", "credit_card"], ["コンビニ払い", "convenience"]] ,class:"form-control" %>
@@ -46,18 +66,19 @@
                 <%= f.label :宛名 %>
                 <%= f.text_field :first_name, value: current_user.first_name, autofocus: true, autocomplete: "first_name", :placeholder => "例）山田" %><%= f.text_field :last_name, value: current_user.last_name,autofocus: true, autocomplete: "last_name", :placeholder => "太郎" %>様
               </div>
-              <%= f.hidden_field :product_id, value: @product.id %>
             <br>
         </div>
       <!-- </div> -->
 
         <div class="col-md-offset-2 col-md-9 col-md-offset-1">
           <div class="text-center price_font">
-            <h3>￥<%= @product.price %>(税込)
+            <% @order.products.each do |product|%>
+            <h3>￥<%= product.price %>(税込)
               <span class="shipping_fee">
-                  <%= @product.burden_of_shipping_fee_i18n %>
+                  <%= product.burden_of_shipping_fee_i18n %>
               </span>
             </h3>
+            <% end %>
           </div>
 
           <!-- <div class="actions"> -->
@@ -66,3 +87,23 @@
         </div>
 
             <% end %>
+
+<script type="text/javascript">
+  $(function(){
+     $('.slider-for').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      fade: true,
+      asNavFor: '.slider-nav'
+    });
+    $('.slider-nav').slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      asNavFor: '.slider-for',
+      dots: true,
+      centerMode: true,
+      focusOnSelect: true
+    });
+  });
+</script>

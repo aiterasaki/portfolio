@@ -16,9 +16,10 @@ Rails.application.routes.draw do
 	resources :products do
 		resources :orders,except: [:show]
   	end
-  	resources :orders,only: :show
+  	# resources :orders,only: :show
 
 	resources :users, :only => [ :show]
+
 
 
 end

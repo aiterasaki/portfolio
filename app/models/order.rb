@@ -3,6 +3,7 @@ class Order < ApplicationRecord
 	has_many :products, through: :product_orders
 
 	belongs_to :user
+	belongs_to :product
 	belongs_to :region
 
 	enum method_of_payment: {credit_card: 0,

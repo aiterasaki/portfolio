@@ -15,8 +15,7 @@ class Product < ApplicationRecord
 	belongs_to :region	
 	belongs_to :user
 
-	has_many :product_orders
-	has_many :orders, through: :product_orders
+	has_one :order
 
 	has_many :product_images, dependent: :destroy
   	accepts_attachments_for :product_images, attachment: :image

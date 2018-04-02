@@ -52,7 +52,7 @@
           </td>
         </tr>
         <tr>
-          <th scope="row">配送料の負担
+          <th scope="row">送料
           </th>
           <td><%= product.burden_of_shipping_fee_i18n %>
           </td>
@@ -106,60 +106,89 @@
 
 <h2 class="text-center">購入履歴
   </h2>
-<!-- <div class="col-md-12"> -->
-<div class="container">
 
-<% @user.products.each do |product|%>
-<%= product.brand %>
-<%= product.name %>
-<%= product.price %>
+<% @user.orders.each do |order|%>
+<div class="col-md-12">
 
-<% product.product_orders.each do |product_order|%>
+  <div class="col-md-offset-2 col-md-4"> 
+    <div class="slider slider-for">
+      <div class ="product_image"><%= image_tag attachment_url(order.product, :thumbnail, :fill, 290, 290) %>
+      </div>
+      <% @order.product.product_images.each do |image| %>
+      <div> 
+        <%= attachment_image_tag image, :image, :fill, 290, 290 %>
+      </div>
+      <% end %>
+    </div>
 
-<%= product_order.order.first_name%>
-<%= product_order.order.last_name%>様
+    <div class="slider slider-nav">
+      <div class ="product_image"><%= image_tag attachment_url(order.product, :thumbnail, :fill, 70, 70) %>
+      </div>
+      <% @order.product.product_images.each do |image| %>
+      <div> 
+      <%= attachment_image_tag image, :image, :fill, 70, 70 %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 
-<%# product_order.orders.each do |order|%>
+  <div class="col-md-5"> 
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+        <th scope="row">送料
+        </th>
+        <td><%= order.product.burden_of_shipping_fee_i18n %>
+        </td>
+        </tr>
+        <br>
+        <tr>
+          <th scope="row">商品名
 
-<%#= order.first_name%>
+          <%#= order.product.brand %>
+          
+          <%#= order.product.detail %>
+          
+          <%#= order.product.status_i18n %>
+          
+          <%#= order.product.burden_of_shipping_fee_i18n %>
+          
+          <%#= order.product.shipping_method_i18n %>
+          
 
-<%# end %>
+          </th>
+        </tr>
 
 
-<% end %>
-<br>
-<% end %>
+
+        <%= order.product.region.name %>
+        <%= order.product.estimated_shipping_date %>
+        <%= order.product.name %>
+        <%= order.product.price %>
+
+        <td><%= order.product.productable.category.name %>/
+            <%= order.product.productable.name %>
+        </td>
 
 
-<!-- ___________________ -->
+        <%= order.first_name%>
+        <%= order.last_name%>様
+        〒<%= order.postal_code%>
+        <%= order.region.name%>
+        <%= order.address_city%>
+        <%= order.address_street%>
+        <%= order.address_building%>
 
-  <% @user.orders.each do |order| %>
-<%#= binding.pry%>
-    <% order.product_orders.each do |product_order| %>
-      <%= product_order.product.name %>
-      <%= product_order.product.price %>
+        <br>
 
-    <% product_order.products.each do |product| %>
-    <p>
-                <%#= attachment_image_tag product_order.product, :thumbnail, :fill, 200, 200, format: 'jpg' %>
-                </p>
-      <%= product.name %>
-      <%= product.price %>
-    <% end %>
 
-    <% end %>
-    <%= order.first_name%>
-    <%= order.last_name%>様
-    〒<%= order.postal_code%>
-    <%= order.region.name%>
-    <%= order.address_city%>
-    <%= order.address_street%>
-    <%= order.address_building%>
-    <br>
-  <% end %>
 
+      </tbody>
+    </table>
+  </div>
 </div>
 
+      <% end %>
 
 <%= link_to "もどる", products_path  %>
 

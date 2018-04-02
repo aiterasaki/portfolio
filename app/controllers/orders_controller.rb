@@ -7,9 +7,8 @@ class OrdersController < ApplicationController
 	def create
 		@order = Order.new(order_params)
 		@order.user_id = current_user.id
-
+		@order.product_id = params[:product_id]
 		if @order.save
-			# binding.pry
 			@product = Product.find(params[:product_id])
 			# @product.user_id = 1
 			# binding.pry
@@ -47,6 +46,7 @@ class OrdersController < ApplicationController
 	  def order_params
 	    params.require(:order).permit(
 	      :user_id,
+	      :product_id,
 	      :method_of_payment,
 	      :first_name,
 	      :last_name,

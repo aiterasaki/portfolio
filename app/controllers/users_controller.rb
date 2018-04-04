@@ -1,11 +1,19 @@
 class UsersController < ApplicationController
-
+before_action :authenticate_user!, except: [:exhibition_history]
 	def show
- 	 	# @user = User.find(params[:id])
-        @user = current_user
-        @order = Order.find(params[:id])
-
+        @product = Product.find(params[:id])
+ 	 	@user = User.find(params[:id])
 	end
+
+    def purchase_history # 購入履歴
+        @user = User.find(params[:id])
+        @product = Product.find(params[:id])
+    end
+
+    def exhibition_history # 出品履歴
+        @user = User.find(params[:id]) 
+    end
+
 
 	def user_params
     params.require(:user).permit(

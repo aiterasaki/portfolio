@@ -25,6 +25,7 @@ User.seed do |s|
 	s.email = "test@test.com"
 	s.password =              "000000"
 	s.password_confirmation = "000000"
+	
 			 
 end
 
@@ -45,5 +46,6 @@ end
 	u.email = "test#{ i + 1 }@test"
 	u.password =              "12345#{ i + 1 }"
 	u.password_confirmation = "12345#{ i + 1 }"
+
   end
 end	

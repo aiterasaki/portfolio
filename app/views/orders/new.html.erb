@@ -1,7 +1,14 @@
 <h3 class="text-center">取引画面(確認用)</h3>
 
-      <!-- <div class="col-md-12">  -->
+
         <div class="col-md-offset-2 col-md-4">
+          <% if @product.sell_flg == false %>
+            <div class="sold_out_back_show">
+              <div class="sold_out">SOLD                
+              </div>
+            </div>
+          <% end %>
+
           <div class="slider slider-for"> 
             <p>
               <%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %>
@@ -34,8 +41,7 @@
             </h2>	
             <%= form_for @order, url: product_orders_path do |f| %>
               <div class="field">
-                <p><%#= f.label :"支払い方法：" %>
-                    <%= f.select :method_of_payment, [["クレジットカード払い", "credit_card"], ["コンビニ払い", "convenience"]] ,class:"form-control" %>
+                <p><%= f.select :method_of_payment, [["クレジットカード払い", "credit_card"], ["コンビニ払い", "convenience"]] ,class:"form-control" %>
                 </p>
               </div>
 
@@ -68,7 +74,6 @@
               </div>
             <br>
         </div>
-      <!-- </div> -->
 
         <div class="col-md-offset-2 col-md-9 col-md-offset-1">
           <div class="text-center price_font">
@@ -81,9 +86,8 @@
             <% end %>
           </div>
 
-          <!-- <div class="actions"> -->
             <%= f.submit "出品者へ送信する" ,class:"form_btn_box btn btn-lg btn-block" %>
-          <!-- </div> -->
+            
         </div>
 
             <% end %>

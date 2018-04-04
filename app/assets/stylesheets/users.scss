@@ -14,3 +14,27 @@
     margin: 0 auto;
     padding: 0 0 10px;
 }
+
+.product_image_purchase, {
+    padding: 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 300px;
+}
+
+.product_image_exhibition{
+	padding: 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 230px;
+}
+
+.sold_out_exhibition{
+    position: absolute;
+    left: 15px;
+    z-index: 2;
+    width: 0;
+    height: 0;
+    border-bottom: 120px solid transparent;
+    border-left: 120px solid #ea352d;
+}

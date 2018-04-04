@@ -18,8 +18,9 @@ Rails.application.routes.draw do
   	end
   	# resources :orders,only: :show
 
-	resources :users, :only => [ :show]
-
-
+	resources :users, :only => [ :show] do
+		get 'purchase_history', on: :member
+		get 'exhibition_history', on: :member
+	end
 
 end

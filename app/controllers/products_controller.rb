@@ -68,7 +68,10 @@ class ProductsController < ApplicationController
 	end
 
 	def show
+
 		@product = Product.find(params[:id])
+		@user = User.find_by(params[:id])
+
 	end
 
 	def edit
@@ -81,7 +84,6 @@ class ProductsController < ApplicationController
 		@product.update(product_params)
 
 		redirect_to root_path
-		# (@product.id)
 
 		@product.productable_id =  Product.find_by_id (params[:id])
 		# @product.productable_id = Product.find(params [:productable_id])

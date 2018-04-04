@@ -1,0 +1,94 @@
+<h2 class="text-center">購入履歴
+  </h2>
+<% @user.orders.each do |order|%>
+      <div class="col-md-12">
+        <%= link_to product_path(order.product.id), target: "_blank" do %>
+        
+        <div class="col-md-offset-2 col-md-4"> 
+          <div class="sold_out_back_show">
+            <div class="sold_out">SOLD                
+            </div>
+          </div>
+
+            <div class ="product_image_purchase"><%= image_tag attachment_url(order.product, :thumbnail, :fill, 290, 290) %>
+            </div>
+
+        </div>
+
+        <div class="col-md-5"> 
+          <table class="table borderless">
+            <tbody>
+              <tr>
+                <th scope="row">商品名
+                </th>
+                <td><%= order.product.name %>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">ブランド
+                </th>
+                <td><%= order.product.brand %>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">送料
+                </th>
+                <td><%= order.product.burden_of_shipping_fee_i18n %>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">値段
+                </th>
+                <td>¥<%= order.product.price %>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">お届け先  
+                </th>
+                <td>
+                  〒<%= order.postal_code%>
+                  <br>
+                    <%= order.region.name%>
+                    <%= order.address_city%>
+                    <%= order.address_street%>
+                    <%= order.address_building%>
+                  <br>
+                  <%= order.first_name%>
+                    <%= order.last_name%>様
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+        <% end %>
+<% end %>
+
+
+<div class="container">
+
+<%= link_to "出品履歴", exhibition_history_user_path  %>
+<br>
+<%= link_to "もどる", user_path  %>
+
+</div>
+
+<script type="text/javascript">
+  $(function(){
+     $('.slider-for').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      fade: true,
+      asNavFor: '.slider-nav'
+    });
+    $('.slider-nav').slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      asNavFor: '.slider-for',
+      dots: true,
+      centerMode: true,
+      focusOnSelect: true
+    });
+  });
+</script>

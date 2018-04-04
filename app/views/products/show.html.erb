@@ -4,7 +4,18 @@
 
 <div class="col-md-12"> 
 		<div class="col-md-offset-2 col-md-4"> 
+
+          <% if @product.sell_flg == false %>
+            <div class="sold_out_back_show">
+              <div class="sold_out">SOLD                
+              </div>
+            </div>
+          <% end %>
+
 			<div class="slider slider-for">
+				<div><%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %>
+				</div>
+
 				<div><%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %>
 				</div>
 
@@ -29,6 +40,11 @@
 		<div class="col-md-5"> 
 			<table class="table table-bordered">
 				<tbody>
+					<tr>
+						<th scope="row">出品者</th>
+						<td><%= link_to @user.nick_name,exhibition_history_user_path(@user.id) %>
+						</td>
+					</tr>
 					<tr>
 						<th scope="row">商品名</th>
 						<td><%= @product.name %>
@@ -96,8 +112,16 @@
 </div>
 
 <div class="col-md-offset-2 col-md-9 col-md-offset-1"> 
+
+	<% if @product.sell_flg == false %>
+		<div class="sold_out_btn container">売り切れました
+		</div>
+	<% else %>
+
 	<%= link_to "購入", new_product_order_path(product_id: @product.id),class:"form_btn_box btn btn-lg btn-block"
 		  %>
+
+	<% end %>
 </div>
 
 <script type="text/javascript">

@@ -1,0 +1,67 @@
+<h2 class="text-center">出品履歴
+  </h2>
+<div class="container">
+  <% @user.products.each do |product| %>
+  <div class="col-md-4 item">
+  <%= link_to product_path(product.id), target: "_blank" do %>
+
+    <% if product.sell_flg == false %>
+      <div class="sold_out_exhibition">
+        <div class="sold_out">SOLD                
+        </div>
+      </div>
+
+      <div class ="product_image_exhibition"><%= image_tag attachment_url(product, :thumbnail, :fill, 220, 220) %>
+       </div>
+
+      <% else %>
+        <div class="">
+          <div class="">    
+          </div>
+        </div>
+
+      <div class ="product_image_exhibition"><%= image_tag attachment_url(product, :thumbnail, :fill, 220, 220) %>
+       </div>
+
+      <% end %>
+
+      <span><%= product.name %>
+      </span>
+      <br>
+      <span>￥<%= product.price %>(税込)
+      </span>
+
+  </div>
+      <% end %>
+<% end %>
+
+
+
+</div>
+<div class="container">
+
+<%= link_to "購入履歴", purchase_history_user_path  %>
+<br>
+
+<%= link_to "もどる", user_path  %>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+     $('.slider-for').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      fade: true,
+      asNavFor: '.slider-nav'
+    });
+    $('.slider-nav').slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      asNavFor: '.slider-for',
+      dots: true,
+      centerMode: true,
+      focusOnSelect: true
+    });
+  });
+</script>

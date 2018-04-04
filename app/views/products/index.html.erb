@@ -114,7 +114,8 @@ __________________
           <!-- </div> -->
           <div class="row">
       			<% @products.each do |product| %>
-      				<div class="col-md-4 item">  				
+      				<div class="col-md-4 item">
+                  <%= link_to product_path(product.id), target: "_blank" do %>
                 <p>
                   <% if product.sell_flg == false %>
                     <div class="sold_out_back">
@@ -139,6 +140,7 @@ __________________
         					<span>¥<%=link_to product.price, product_path(product.id) %>(税込)
                   </span>
       				</div>
+                  <% end %>
       			<% end %>
           </div>
           <!-- /.row -->

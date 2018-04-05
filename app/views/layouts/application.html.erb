@@ -12,25 +12,15 @@
 <!-- /スクリプトを読み込む -->
     <%= javascript_include_tag 'application' %>
 
-<!--     <link rel="stylesheet" href="./slick-theme.css" />
-     
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="./slick.min.js"></script> -->
-
-<!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.8.0/slick.css"/>
-
-<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.8.0/slick.min.js"></script> -->
-
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
-
-
   </head>
 
   <body>
-  	<%= render 'layouts/header' %>
-
+    <%= render 'shared/header' %>
+    <main class="clearfix">
     <%= yield %>
-
+    </main>
+    <%= render 'shared/footer' %>
   </body>
 </html>

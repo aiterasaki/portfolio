@@ -25,27 +25,26 @@ User.seed do |s|
 	s.email = "test@test.com"
 	s.password =              "000000"
 	s.password_confirmation = "000000"
-	
-			 
+
 end
 
 10.times do  |i| 
   User.seed do |u|
   	u.id = i + 3
-    u.nick_name = "ユーザー#{ i + 1 }番用"
-	u.first_name =  "Example#{ i + 1 }"
-	u.last_name =  "User#{ i + 1 }"
-	u.first_name_kana = "テスト#{ i + 1 }"
-	u.last_name_kana = "カクニンヨウ#{ i + 1 }"
+    u.nick_name = "ユーザー#{ i + 3 }番"
+	u.first_name =  "Example#{ i + 3 }"
+	u.last_name =  "User#{ i + 3 }"
+	u.first_name_kana = "テスト#{ i + 3 }"
+	u.last_name_kana = "カクニンヨウ#{ i + 3 }"
 	u.postal_code = "123-456"
 	u.region_id = rand(1..47)
 	u.address_city = "札幌市"
 	u.address_street = "中央区"
-	u.address_building = "１−１−２#{ i + 1 }"
-	u.telephone = "090-1234-56#{ i + 1 }"
-	u.email = "test#{ i + 1 }@test"
-	u.password =              "12345#{ i + 1 }"
-	u.password_confirmation = "12345#{ i + 1 }"
+	u.address_building = "１−１−２#{ i + 3 }"
+	u.telephone = "090-1234-56#{ i + 3 }"
+	u.email = "test#{ i + 3 }@test"
+	u.password =              "12345#{ i + 3 }"
+	u.password_confirmation = "12345#{ i + 3 }"
 
   end
 end	

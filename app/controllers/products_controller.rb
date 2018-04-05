@@ -21,7 +21,6 @@ class ProductsController < ApplicationController
 
 
 	def index
-
 		if params[:ladies_category_id].presence
 			@ladies_category = LadiesCategory.find(params[:ladies_category_id])
 			@products = @ladies_category.products
@@ -68,10 +67,7 @@ class ProductsController < ApplicationController
 	end
 
 	def show
-
 		@product = Product.find(params[:id])
-		@user = User.find_by(params[:id])
-
 	end
 
 	def edit

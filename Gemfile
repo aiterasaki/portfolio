@@ -13,6 +13,7 @@ gem 'pry-rails'
 gem 'seed-fu'
 gem 'devise'
 gem 'rails-i18n'
+gem "font-awesome-rails"
 
 gem 'bootstrap-sass'
 gem 'kaminari'

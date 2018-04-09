@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
 
 	namespace :admins do
 		resources :products 
 	end
+=======
+	# devise_for :admins
+
+	# namespace :admin do
+	# 	resources :products
+	# end
+>>>>>>> 207e3ec3270d803271790b4f2da66de0a9850243
 
 	resources :products do
 		resources :orders,except: [:show]

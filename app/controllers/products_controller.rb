@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 	  before_action :authenticate_user!, only: [:new, :edit, :update]
 	  before_action :current_user, only: [:edit, :update]
+	  before_action :authenticate_admin!,     only: [:destroy]
 
 
 	def new

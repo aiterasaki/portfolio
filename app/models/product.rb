@@ -14,7 +14,8 @@ class Product < ApplicationRecord
  
 	belongs_to :region	
 	belongs_to :user
-
+	belongs_to :admin
+	
 	has_one :order
 
 	has_many :product_images, dependent: :destroy

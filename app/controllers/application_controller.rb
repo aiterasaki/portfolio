@@ -13,10 +13,10 @@ class ApplicationController < ActionController::Base
 
 	def after_sign_in_path_for(resource)
 		if current_user.admin_flg == true
-			admin_products_path # ログイン後に遷移するpathを設定
+			admins_products_path # ログイン後に遷移するpathを設定
 		else
-			root_path 
-		end 
+			root_path
+		end
 	end
 
 	def after_sign_out_path_for(resource)

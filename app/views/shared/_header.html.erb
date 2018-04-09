@@ -1,8 +1,8 @@
-<nav class="header_nav navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand"><%= link_to "もどる", products_path, id: "logo" %>
-  </a>
-  
-    <div class="col-sm-8 col-sm-offset-2 input-group">
+<nav class="header_nav navbar navbar-expand-lg bg-color fixed-top">
+  <div class="logo_box"><%= link_to image_tag('/images/win_win_logo.png',:width => "160",:height => "120", class: "btn") , products_path %>
+  </div>
+
+    <div class="col-sm-8">
       <%= form_tag(products_path, method: "get") do  %>
 
           <div class="input-group">
@@ -19,21 +19,42 @@
 
      <div class="col-sm-5 col-sm-offset-7">
       <% if user_signed_in? %>
-      <h3 class="login_nick_name">こんにちは、<%= current_user.nick_name %>さん
-      </h3>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          <%= link_to 'プロフィール変更', edit_user_registration_path %>
-          <%= link_to 'マイページ', user_path(current_user) %>
+      <a class="login_nick_name">こんにちは、<%= current_user.nick_name %>さん
+      </a>
+
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="logout">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="profile">
+            <%= link_to 'プロフィール変更', edit_user_registration_path %>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="mypage">
+          <%= link_to 'マイページ', user_path(current_user) %> 
+          </div>
+        </div>
+      </div>
+
 
     </div>
       <% else %>
 
-      <div class="header_login">
-          <%= link_to "ログイン", new_user_session_path %>
-      </div>
-      
-      <div class="header_sign_up">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="login">
+            <%= link_to "ログイン", new_user_session_path %>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="sign_up">
           <%= link_to "新規会員登録", new_user_registration_path %> 
+          </div>
+        </div>
       </div>
 
       <% end %>

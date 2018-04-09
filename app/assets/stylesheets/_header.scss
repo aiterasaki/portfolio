@@ -1,38 +1,49 @@
-.bg-dark {
+.bg-color {
     background: #fff;
 }
 .login_nick_name{
 	color: #5e78c1;
 }
 
+.input-group{
+	top: 50px;
+}
+
+.input-group-btn{
+	background: #ccc;
+}
+
+.logo_box{
+	float: left;
+}
+
 .header_nav{
 	height: 150px;
 }
 
-.header_login{
-	background: rgb(234, 53, 45);
-	width: 60px;
+.logout,.profile,.mypage,.login,.sign_up{
 	height: 30px;
 	border-radius: 4px;
     text-align: center;
     line-height: 30px;
+}
+
+.login{
+	background: rgb(234, 53, 45);
     a{
 	color: #fff;
     }
 }
 
-.header_sign_up{
-	width: 120px;
-	height: 30px;
-	border-radius: 4px;
-    text-align: center;
-	display: block;
-    border: 1px solid #0099e8;
-    background: #fff;
-    color: #0099e8;
-    padding: 0px 16px;
-    a:hover{
-	color:#E48E00;
-	text-decoration:underline;
+.sign_up{
+	background: #fff;
+	color: #0099e8;
+	border: 1px solid #0099e8;
+}
+
+.sign_up:hover{
+	background-color:#0099e8;
+	a{
+	color: #fff;
 	}
 }

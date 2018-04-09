@@ -1,8 +1,6 @@
 class Product < ApplicationRecord
 	validates :price, numericality:  { greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999 }
-
 # ↑バリデーション　動作確認ずみ
-
 
 	# validates_presence_of :name
 	validates_presence_of :thumbnail
@@ -14,8 +12,6 @@ class Product < ApplicationRecord
  
 	belongs_to :region	
 	belongs_to :user
-	belongs_to :admin
-	
 	has_one :order
 
 	has_many :product_images, dependent: :destroy

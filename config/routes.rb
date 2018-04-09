@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+	# namespace :admins do
+	# 	resources :products 
+	# end
+
 	resources :products do
 		resources :orders,except: [:show]
 	end

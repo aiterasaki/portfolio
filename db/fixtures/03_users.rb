@@ -1,14 +1,3 @@
-# User.seed do |a|
-# 	a.id = 1
-# 	a.nick_name = "管理者用"
-# 	a.email = "admin@admin.com"
-# 	a.password =              "000000"
-# 	a.password_confirmation = "000000"
-# 	a.admin_flg = "true"
-	
-			 
-# end
-
 User.seed do |s|
 	s.id = 1
 	s.nick_name = "管理者用"

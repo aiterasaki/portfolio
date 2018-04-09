@@ -28,18 +28,7 @@ class OrdersController < ApplicationController
 		end
 	end
 
-	# def show
-		# @order = Order.find(params[:id])
-		# @order = Order.new(order_params)
-	    # @order.user_id = current_user.id
-	    # if @order.save
-		   # redirect_to @order, notice: '応募が完了しました！'
-		   # # @order.product.sell_flg = false
-		   # # @order.product.save
-	    # else
-	    #   render :new
-	    # end	
-	# end
+
 
 	private
 

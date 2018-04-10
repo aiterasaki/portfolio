@@ -137,8 +137,9 @@ __________________
         					<span><%=link_to product.name, product_path(product.id) %>     
                   </span>
         					<br>
-        					<span>¥<%=link_to product.price, product_path(product.id) %>(税込)
-                  </span>
+                  <div class="text-center ">
+                  ￥<%=link_to number_to_currency(product.price), product_path(product.id) %>(税込)
+                  </div>
       				</div>
                   <% end %>
       			<% end %>

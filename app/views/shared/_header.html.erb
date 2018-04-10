@@ -24,8 +24,8 @@
 
       <div class="row">
         <div class="col-sm-3">
-          <div class="logout">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <div class="mypage">
+          <%= link_to 'マイページ', user_path(current_user) %> 
           </div>
         </div>
         <div class="col-sm-4">
@@ -34,13 +34,11 @@
           </div>
         </div>
         <div class="col-sm-3">
-          <div class="mypage">
-          <%= link_to 'マイページ', user_path(current_user) %> 
+          <div class="logout">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
           </div>
         </div>
       </div>
-
-
     </div>
       <% else %>
 
@@ -58,5 +56,4 @@
       </div>
 
       <% end %>
-
 </nav>

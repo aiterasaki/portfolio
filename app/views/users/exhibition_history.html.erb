@@ -3,47 +3,53 @@
 <div class="container">
   <% @user.products.each do |product| %>
   <div class="col-md-4 item">
-  <%= link_to product_path(product.id), target: "_blank" do %>
+    <%= link_to product_path(product.id), target: "_blank" do %>
 
-    <% if product.sell_flg == false %>
-      <div class="sold_out_exhibition">
-        <div class="sold_out">SOLD                
-        </div>
-      </div>
-
-      <div class ="product_image_exhibition"><%= image_tag attachment_url(product, :thumbnail, :fill, 220, 220) %>
-       </div>
-
-      <% else %>
-        <div class="">
-          <div class="">    
+      <% if product.sell_flg == false %>
+        <div class="sold_out_exhibition">
+          <div class="sold_out">SOLD                
           </div>
         </div>
 
-      <div class ="product_image_exhibition"><%= image_tag attachment_url(product, :thumbnail, :fill, 220, 220) %>
-       </div>
+        <div class ="product_image_exhibition">
+          <%= image_tag attachment_url(product, :thumbnail, :fill, 220, 220) %>
+        </div>
+
+        <% else %>
+          <div class="">
+            <div class="">    
+            </div>
+          </div>
+
+        <div class ="product_image_exhibition">
+          <%= image_tag attachment_url(product, :thumbnail, :fill, 220, 220) %>
+        </div>
 
       <% end %>
 
-      <span><%= product.name %>
-      </span>
-      <br>
-      <span>￥<%= product.price %>(税込)
-      </span>
-
-  </div>
-      <% end %>
-<% end %>
-
-
-
+        <span><%= product.name %>
+        </span>
+        <br>
+        <div class="col-sm-offset-2 col-md-8">
+          ￥<%=link_to number_to_currency(product.price), product_path(product.id) %>(税込)
+        </div>
+    </div>
+    <% end %>
+  <% end %>
 </div>
+
 <div class="container">
-
-<%= link_to "購入履歴", purchase_history_user_path  %>
-<br>
-
-<%= link_to "もどる", user_path  %>
+  <br>
+  <% if user_signed_in? %>
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="exhibition_history">
+        <%= link_to "購入履歴", purchase_history_user_path  %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <%= link_to "もどる", user_path  %>
 </div>
 
 <script type="text/javascript">

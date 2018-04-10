@@ -39,7 +39,7 @@
               <tr>
                 <th scope="row">値段
                 </th>
-                <td>¥<%= order.product.price %>
+                <td>￥<%= number_to_currency(order.product.price) %>(税込)
                 </td>
               </tr>
               <tr>

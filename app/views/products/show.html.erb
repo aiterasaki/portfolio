@@ -1,5 +1,5 @@
 <div class="col-md-2">
-	<%= link_to "一覧へもどる", products_path %>
+  <%= link_to "一覧へもどる", products_path %>
 </div>
 
 <div class="col-md-12"> 
@@ -44,6 +44,7 @@
 						<th scope="row">出品者</th>
 						<td><%= link_to @product.user.nick_name,exhibition_history_user_path(@product.user.id) %>
 						</td>
+
 					</tr>
 					<tr>
 						<th scope="row">商品名</th>
@@ -89,13 +90,11 @@
 				</tbody>		
 			</table>
 
-		<% if user_signed_in? %>
-		<% if current_user.id == @product.user_id %>
+		<% if user_signed_in? && current_user.id == @product.user_id %>
 
 		<%= link_to "編集", edit_product_path(@product.id) %>
 
 		<%= link_to "削除", product_path(@product.id), method: :delete, class: "btn destroy-btn", "data-confirm" => "本当に削除しますか？" %>
-		<% end %>
 		<% end %>
 
 		</div>
@@ -111,22 +110,17 @@
 		<div class="sold_out_btn container">売り切れました
 		</div>
 	<% else %>
-	
-	<%# if user_signed_in? %>	
-
-	<%# if current_user.id == @product.user_id %>
-	<%# else %>
-		<div class="col-md-offset-2 col-md-8 col-md-offset-2"> 
-			<%= link_to "購入", new_product_order_path(product_id: @product.id),class:"form_btn_box btn btn-lg btn-block"
-			  %>
-			<div class="detail">
-				<td><%= @product.detail %>
-				</td>
+		<% if !(user_signed_in?) || user_signed_in? && current_user.id != @product.user_id %>
+			<div class="buy_btn container"> 
+				<%= link_to "購入", new_product_order_path(product_id: @product.id),class:"form_btn_box btn btn-lg btn-block" %>
 			</div>
-		</div>
+		<% else %>
 		<% end %>
-	<%# end %>
-		<%# end %>
+		<!-- <br> -->
+			<div class="detail">
+				<td><%= @product.detail %></td>
+			</div>
+	<% end %>
 </div>
 
 

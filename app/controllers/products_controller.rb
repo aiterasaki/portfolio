@@ -1,8 +1,7 @@
 class ProductsController < ApplicationController
-	  before_action :authenticate_user!, only: [:new, :edit, :update]
+	  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
 	  before_action :current_user, only: [:edit, :update]
-	  before_action :authenticate_admin!,     only: [:destroy]
-
+		before_action :admin, only: [:destroy]
 
 	def new
 		@product = Product.new
@@ -85,6 +84,10 @@ class ProductsController < ApplicationController
 
 		@product.productable_id =  Product.find_by_id (params[:id])
 		# @product.productable_id = Product.find(params [:productable_id])
+	end
+
+	def admin
+		redirect_to(products_path) unless current_user.admin_flg?
 	end
 
 	def destroy

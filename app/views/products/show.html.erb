@@ -93,9 +93,13 @@
 		<% if user_signed_in? && current_user.id == @product.user_id %>
 
 		<%= link_to "編集", edit_product_path(@product.id) %>
+		<% end %>
 
+		<% if user_signed_in? && current_user.admin_flg || user_signed_in? && current_user.id == @product.user_id %>
 		<%= link_to "削除", product_path(@product.id), method: :delete, class: "btn destroy-btn", "data-confirm" => "本当に削除しますか？" %>
 		<% end %>
+
+
 
 		</div>
 </div>
@@ -116,7 +120,7 @@
 			</div>
 		<% else %>
 		<% end %>
-		<!-- <br> -->
+	　　	
 			<div class="detail">
 				<td><%= @product.detail %></td>
 			</div>

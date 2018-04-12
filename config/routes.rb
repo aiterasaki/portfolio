@@ -9,22 +9,25 @@ Rails.application.routes.draw do
 	end
 
 
-	devise_for :admins, controllers: {
-		sessions:      'admins/sessions',
-		passwords:     'admins/passwords',
-		registrations: 'admins/registrations'
-		}
+	# devise_for :admins, controllers: {
+	# 	sessions:      'admins/sessions',
+	# 	passwords:     'admins/passwords',
+	# 	registrations: 'admins/registrations'
+	# 	}
 
 	devise_for :users, :controllers => {
 		:registrations => 'users/registrations',
-		:sessions => 'users/sessions'   
+		:sessions => 'users/sessions'
+
 	} 
 
 	root 'products#index'
 
-	resources :users, :only => [ :show] do
+	resources :users, :only => [ :show, :index] do
 		get 'purchase_history', on: :member
 		get 'exhibition_history', on: :member
 	end
+
+	delete '/users/:id', to: 'users#destroy'
 
 end

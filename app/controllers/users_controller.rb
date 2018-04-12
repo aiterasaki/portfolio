@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
-before_action :authenticate_user!, except: [:exhibition_history]
+before_action :authenticate_user!, only: [:index, :edit, :update]
+before_action :admin, only: [:destroy]
+
+    def index
+        @users = User.all
+        
+    end
+
 	def show
         @product = Product.find(params[:id])
  	 	@user = User.find(params[:id])
@@ -14,6 +21,17 @@ before_action :authenticate_user!, except: [:exhibition_history]
         @user = User.find(params[:id]) 
     end
 
+    def admin
+      redirect_to(users_path) unless current_user.admin_flg?
+    end
+
+
+    def destroy
+        @user = User.find(params[:id])
+        @user.destroy
+        flash[:success] = "User deleted." 
+        redirect_to users_path
+    end
 
 	def user_params
     params.require(:user).permit(

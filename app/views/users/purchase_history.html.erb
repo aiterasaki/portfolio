@@ -2,7 +2,7 @@
   </h2>
 <% @user.orders.each do |order|%>
       <div class="col-md-12">
-        <%= link_to product_path(order.product.id), target: "_blank" do %>
+        <%= link_to product_path(order.product.id) do %>
         
         <div class="col-md-offset-2 col-md-4"> 
           <div class="sold_out_back_show">

@@ -23,6 +23,14 @@
       </a>
 
       <div class="row">
+      <% if current_user.admin_flg %>
+        <div class="col-sm-3">
+          <div class="mypage">
+          <%= link_to 'ユーザー一覧', users_path %> 
+          </div>
+        </div>
+        <% end %>
+
         <div class="col-sm-3">
           <div class="mypage">
           <%= link_to 'マイページ', user_path(current_user) %> 

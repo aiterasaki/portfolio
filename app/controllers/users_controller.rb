@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-before_action :authenticate_user!, only: [:index, :edit, :update]
-before_action :admin, only: [:destroy]
+before_action :authenticate_user!, only: [:edit, :update]
+before_action :admin, only: [:index,:destroy]
 
     def index
         @users = User.all
@@ -8,8 +8,7 @@ before_action :admin, only: [:destroy]
     end
 
 	def show
-        @product = Product.find(params[:id])
- 	 	@user = User.find(params[:id])
+        @user = User.find(params[:id])
 	end
 
     def purchase_history # 購入履歴

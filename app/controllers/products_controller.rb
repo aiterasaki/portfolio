@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
-	  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
-	  before_action :current_user, only: [:edit, :update]
-		before_action :admin, only: [:destroy]
+	  before_action :authenticate_user!, only: [:new, :edit, :update]
+		before_action :products_deleter, only: [:destroy]
 
 	def new
 		@product = Product.new
@@ -58,17 +57,14 @@ class ProductsController < ApplicationController
 		if params[:burden_of_shipping_fee].present?
 		@products = @products.get_by_burden_of_shipping_fee params[:burden_of_shipping_fee]
 		end
-
 		if params[:sell_flg].present?
 		@products = @products.get_by_sell_flg params[:sell_flg]
 		end
-
 
 	end
 
 	def show
 		@product = Product.find(params[:id])
-		# binding.pry
 	end
 
 	def edit
@@ -79,21 +75,19 @@ class ProductsController < ApplicationController
 	def update
 		@product = Product.find(params[:id])
 		@product.update(product_params)
-
 		redirect_to root_path
 
 		@product.productable_id =  Product.find_by_id (params[:id])
 		# @product.productable_id = Product.find(params [:productable_id])
 	end
 
-	def admin
-		redirect_to(products_path) unless current_user.admin_flg?
+	def products_deleter
+		redirect_to(products_path) unless current_user.admin_flg? || current_user
 	end
 
 	def destroy
 		@product = Product.find(params[:id])
 		@product.destroy
-
 		redirect_to products_path
 	end
 

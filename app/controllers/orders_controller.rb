@@ -10,28 +10,14 @@ class OrdersController < ApplicationController
 		@order.product_id = params[:product_id]
 		if @order.save
 			@product = Product.find(params[:product_id])
-			# @product.user_id = 1
-			# binding.pry
-			@product.update(sell_flg: false) #if @product.sell_flg == true
-			#@product.update(sell_flg: false) 
-			# ここで、プロダクトオーダー（注文履歴的なの）に商品の情報と、オーダーの情報セーブ
-
-			# binding.pry
-
-			# @product_order = ProductOrder.new
-			# @product_order.product_id = @product.id
-			# @product_order.order_id = @order.id
+			@product.update(sell_flg: false) 
 			redirect_to root_path, notice: '送信が完了しました！'
-			# @product_order.save
 		else
 			render 'new'
 		end
 	end
 
-
-
 	private
-
 	  def order_params
 	    params.require(:order).permit(
 	      :user_id,

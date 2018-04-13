@@ -11,40 +11,34 @@
     <!-- スライドの内容 -->
     <div class="carousel-inner">
       <div class="item active">
-  			<%= image_tag '/images/smile.jpg', :size => "940x390" %>
-  		<div class="carousel-caption">
-  			<h1>スマホでかんたん</h1>
-  			<p>誰でも簡単に、売ったり買ったりを楽しめる</p>
-  			<button type="button" class="btn btn-primary">ページ詳細</button>
-  		</div>
-      </div>
-
-      <div class="item">
-  		<%= image_tag '/images/mens.jpg', :size => '940x390' %>
-  		<div class="carousel-caption">
-  			<h1>簡単に出品できる</h1>
-  			<p>スマホで写真を撮って特徴を入力するだけで、簡単に出品できます。</p>
-  			<button type="button" class="btn btn-primary">ページ詳細</button>
-  		</div>
+    			<%= image_tag '/images/smile.jpg' %>
+    		<div class="carousel-caption">
+    			<h1>スマホでかんたん</h1>
+    			<p>誰でも簡単に、売ったり買ったりを楽しめる</p>
+    		</div>
       </div>
       <div class="item">
-  		<%= image_tag '/images/hand_made.jpg', :size => '940x390' %>
-  		<div class="carousel-caption">
-  			<h1>すぐに購入できる</h1>
-  			<p>ボタン1つで即購入。あとは出品者からの発送を待つだけです。</p>
-  			<button type="button" class="btn btn-primary">ページ詳細</button>
-  		</div>
+  		<%= image_tag '/images/mens.jpg' %>
+    		<div class="carousel-caption">
+    			<h1>簡単に出品できる</h1>
+    			<p>スマホで写真を撮って特徴を入力するだけで、簡単に出品できます。</p>
+    		</div>
       </div>
       <div class="item">
-  		<%= image_tag '/images/ladies.jpg', :size => '940x390' %>
-  		<div class="carousel-caption">
-  			<h1>商品がたくさん</h1>
-  			<p>毎日数十万品以上の新商品が出品されるので、ほしいものがきっと見つかります。</p>
-  			<button type="button" class="btn btn-primary">ページ詳細</button>
-  		</div>
+  		<%= image_tag '/images/hand_made.jpg' %>
+    		<div class="carousel-caption">
+    			<h1>すぐに購入できる</h1>
+    			<p>ボタン1つで即購入。あとは出品者からの発送を待つだけです。</p>
+    		</div>
+      </div>
+      <div class="item">
+  		<%= image_tag '/images/ladies.jpg' %>
+    		<div class="carousel-caption">
+    			<h1>商品がたくさん</h1>
+    			<p>毎日数十万品以上の新商品が出品されるので、ほしいものがきっと見つかります。</p>
+    		</div>
       </div>
     </div>
-
     <!-- 左右の移動ボタン -->
     <a class="left carousel-control" href="#carousel-example" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -61,7 +55,7 @@
       <div class="row">
         <div class="col-md-2">
          <div class="list-group">
-_________________
+
 <div> 
 <%= form_tag(root_path, method: "get") do %>
 
@@ -81,13 +75,8 @@ _________________
 <%= select_tag :sell_flg, options_for_select([["すべて",""], ["販売中", "t"], ["売り切れ", "f"]], :sell_flg) %>
 <br>
 <%= submit_tag "検索" %>
-
 <% end %>
 </div>
-
-__________________
-
-
 <!--           <div class="list-group"> -->
             <a href="#" class="list-group-item">レディース
             </a>
@@ -143,6 +132,7 @@ __________________
       				</div>
                   <% end %>
       			<% end %>
+            <%= paginate @products %>
           </div>
           <!-- /.row -->
         </div>

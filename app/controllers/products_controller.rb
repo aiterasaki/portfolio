@@ -18,7 +18,6 @@ class ProductsController < ApplicationController
 	    end
 	end
 
-
 	def index
 		if params[:ladies_category_id].presence
 			@ladies_category = LadiesCategory.find(params[:ladies_category_id])
@@ -33,18 +32,18 @@ class ProductsController < ApplicationController
 			@products = @handmade_category.products
 		else
 			@products = Product.all.order(created_at: 'desc')
+			@products = Product.page(params[:page]).per(15)
 		end
 
 		@ladies_categories = LadiesCategory.all
 		@mens_categories = MensCategory.all
 		@handmade_categories = HandmadeCategory.all
 
-# ＿＿＿headerの検索分
+# headerの検索
 		if params[:search].present?
 		@products = @products.header_search params[:search]
 		end
-# ＿＿＿＿＿＿
-		# パラメータとして受け取っている場合は絞って検索する
+# index画面での検索
 		if params[:name].present?
 		@products = @products.get_by_name params[:name]
 		end
@@ -60,7 +59,6 @@ class ProductsController < ApplicationController
 		if params[:sell_flg].present?
 		@products = @products.get_by_sell_flg params[:sell_flg]
 		end
-
 	end
 
 	def show
@@ -76,9 +74,7 @@ class ProductsController < ApplicationController
 		@product = Product.find(params[:id])
 		@product.update(product_params)
 		redirect_to root_path
-
 		@product.productable_id =  Product.find_by_id (params[:id])
-		# @product.productable_id = Product.find(params [:productable_id])
 	end
 
 	def products_deleter
@@ -91,27 +87,24 @@ class ProductsController < ApplicationController
 		redirect_to products_path
 	end
 
-
 private
-
-	  def product_params
-	    params.require(:product).permit(
-	      :user_id,
-	      :brand,
-	      :detail,
-	      :status,
-	      :burden_of_shipping_fee,
-	      :shipping_method,
-	 	  :region_id,
-	      :estimated_shipping_date,
-	      :price,
-	      :sell_flg,
-	      :name,
-	      :productable_id,
-	      :productable_type,
-	      :thumbnail,
-	      product_images_images: []
-	    )
-	  end
-
+	def product_params
+	  params.require(:product).permit(
+	    :user_id,
+	    :brand,
+	    :detail,
+	    :status,
+	    :burden_of_shipping_fee,
+	    :shipping_method,
+		  :region_id,
+	    :estimated_shipping_date,
+	    :price,
+	    :sell_flg,
+	    :name,
+	    :productable_id,
+	    :productable_type,
+	    :thumbnail,
+	    product_images_images: []
+	  )
+	end
 end

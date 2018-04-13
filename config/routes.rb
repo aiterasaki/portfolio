@@ -1,24 +1,12 @@
 Rails.application.routes.draw do
 
-	# namespace :admins do
-	# 	resources :products 
-	# end
-
 	resources :products do
 		resources :orders,except: [:show]
 	end
 
-
-	# devise_for :admins, controllers: {
-	# 	sessions:      'admins/sessions',
-	# 	passwords:     'admins/passwords',
-	# 	registrations: 'admins/registrations'
-	# 	}
-
 	devise_for :users, :controllers => {
 		:registrations => 'users/registrations',
 		:sessions => 'users/sessions'
-
 	} 
 
 	root 'products#index'

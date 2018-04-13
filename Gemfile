@@ -5,16 +5,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-# gem 'hirb'         # 出力結果を表として出力するgem
-# gem 'hirb-unicode'  # マルチバイト文字の表示を補正するgem
-
 gem 'enum_help'
 gem 'pry-rails'
 gem 'seed-fu'
 gem 'devise'
 gem 'rails-i18n'
 gem "font-awesome-rails"
-
 gem 'bootstrap-sass'
 gem 'kaminari'
 gem "refile", github: 'refile/refile', require: "refile/rails"

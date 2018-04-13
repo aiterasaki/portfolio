@@ -3,39 +3,37 @@
 </div>
 
 <div class="col-md-12"> 
-		<div class="col-md-offset-2 col-md-4"> 
+	<div class="col-md-offset-2 col-md-4"> 
 
-          <% if @product.sell_flg == false %>
-            <div class="sold_out_back_show">
-              <div class="sold_out">SOLD                
-              </div>
-            </div>
-          <% end %>
+	<% if @product.sell_flg == false %>
+	  <div class="sold_out_back_show">
+	    <div class="sold_out">SOLD
+	    </div>
+	  </div>
+	<% end %>
 
-			<div class="slider slider-for">
-				<div><%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %>
-				</div>
-
-				<div><%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %>
-				</div>
-
-				<% @product.product_images.each do |image| %>
-					<div> 
-						<%= attachment_image_tag image, :image, :fill, 290, 290 %>
-					</div>
-				<% end %>
+		<div class="slider slider-for">
+			<div><%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %>
+			</div>
+			<div><%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %>
 			</div>
 
-			<div class="slider slider-nav">
-				<div><%= attachment_image_tag @product, :thumbnail, :fill, 70, 70, format: 'jpeg' %>
+			<% @product.product_images.each do |image| %>
+				<div><%= attachment_image_tag image, :image, :fill, 290, 290 %>
 				</div>
-
-				<% @product.product_images.each do |image| %>
-					<div><%= attachment_image_tag image, :image, :fill, 70, 70 %>
-					</div>
-				<% end %>
-			</div>
+			<% end %>
 		</div>
+
+		<div class="slider slider-nav">
+			<div><%= attachment_image_tag @product, :thumbnail, :fill, 70, 70, format: 'jpeg' %>
+			</div>
+
+			<% @product.product_images.each do |image| %>
+				<div><%= attachment_image_tag image, :image, :fill, 70, 70 %>
+				</div>
+			<% end %>
+		</div>
+	</div>
 
 		<div class="col-md-5"> 
 			<table class="table table-bordered">
@@ -44,7 +42,6 @@
 						<th scope="row">出品者</th>
 						<td><%= link_to @product.user.nick_name,exhibition_history_user_path(@product.user.id) %>
 						</td>
-
 					</tr>
 					<tr>
 						<th scope="row">商品名</th>
@@ -91,18 +88,15 @@
 			</table>
 
 		<% if user_signed_in? && current_user.id == @product.user_id %>
-
-		<%= link_to "編集", edit_product_path(@product.id) %>
+			<%= link_to "編集", edit_product_path(@product.id) %>
 		<% end %>
 
 		<% if user_signed_in? && current_user.admin_flg || user_signed_in? && current_user.id == @product.user_id %>
-		<%= link_to "削除", product_path(@product.id), method: :delete, class: "btn destroy-btn", "data-confirm" => "本当に削除しますか？" %>
+			<%= link_to "削除", product_path(@product.id), method: :delete, class: "btn destroy-btn", "data-confirm" => "本当に削除しますか？" %>
 		<% end %>
-
-
-
 		</div>
 </div>
+
 <div class="col-md-offset-2 col-md-9 col-md-offset-1">
 	<div class="text-center price_font">
 	￥<%= number_to_currency(@product.price) %>(税込)

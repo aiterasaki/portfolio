@@ -1,5 +1,5 @@
-<h2 class="text-center">出品履歴
-  </h2>
+<h2 class="text-center"><%= @user.nick_name%>さんの出品履歴</h2>
+
 <div class="container">
   <% @user.products.each do |product| %>
   <div class="col-md-3 index_item_box">
@@ -46,9 +46,14 @@
         <%= link_to "購入履歴", purchase_history_user_path  %>
       </div>
 
+  <%= link_to "もどる", user_path  %>
+
+  <% else %>
+
+  <%= link_to "もどる", products_path  %>
+
   <% end %>
 
-  <%= link_to "もどる", user_path  %>
 </div>
 
 <script type="text/javascript">

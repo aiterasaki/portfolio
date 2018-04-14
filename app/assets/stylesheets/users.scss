@@ -15,6 +15,21 @@
     padding: 0 0 10px;
 }
 
+.delete_btn{
+    font-size: 15px;
+    color: white;
+    padding: 10px 50px;
+    width: 200px;
+    height: 30px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 30px;
+    background: #ea352e;
+}
+.delete_btn:hover{
+    color: white;
+}
+
 .product_image_purchase {
     padding: 4px;
     border: 1px solid #ddd;
@@ -24,8 +39,8 @@
 
 .exhibition_btn{
     width: 200px;
-        height: 30px;
-        border-radius: 4px;
+    height: 30px;
+    border-radius: 4px;
     text-align: center;
     line-height: 30px;
 }
@@ -44,7 +59,6 @@
         }
 }
 
-
 .product_image_exhibition{
 	padding: 4px;
     border: 1px solid #ddd;
@@ -54,7 +68,6 @@
 
 .sold_out_exhibition{
     position: absolute;
-    left: 15px;
     z-index: 2;
     width: 0;
     height: 0;

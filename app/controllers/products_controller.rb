@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
 	def create
 		@product = Product.new(product_params)
 	    @product.user_id = current_user.id
-	  	 if @product.save
+	  	if @product.save
 		    redirect_to products_path
 	    else
 	      render 'new'
@@ -67,6 +67,11 @@ class ProductsController < ApplicationController
 	def edit
 		@product = Product.find(params[:id])
 		@regions = Region.all
+		@product.user_id == current_user.id
+		if @product.user_id != @current_user.id
+			flash[:notice] = "権限がありません"
+			redirect_to products_path	
+		end
 	end
 
 	def update

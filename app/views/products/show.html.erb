@@ -37,48 +37,48 @@
 		<div class="col-md-5"> 
 			<table class="table table-bordered">
 				<tbody>
-					<tr>
-						<th scope="row">出品者</th>
+					<tr class="product_show">
+						<th ="row">出品者</th>
 						<td><%= link_to @product.user.nick_name,exhibition_history_user_path(@product.user.id) %>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">商品名</th>
+						<th ="row">商品名</th>
 						<td><%= @product.name %>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">ブランド</th>
+						<th ="row">ブランド</th>
 						<td><%= @product.brand %>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">商品の状態</th>
+						<th ="row">商品の状態</th>
 						<td><%= @product.status_i18n %>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">配送料の負担</th>
+						<th ="row">配送料の負担</th>
 						<td><%= @product.burden_of_shipping_fee_i18n %>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">配送方法</th>
+						<th ="row">配送方法</th>
 						<td><%= @product.shipping_method_i18n %>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">配送元地域</th>
+						<th ="row">配送元地域</th>
 						<td><%= @product.region.name %>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">発送日の目安</th>
+						<th ="row">発送日の目安</th>
 						<td><%= @product.estimated_shipping_date_i18n %>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">カテゴリー</th>
+						<th ="row">カテゴリー</th>
 						<td><%= @product.productable.category.name %>/
 							<%= @product.productable.name %>
 						</td>
@@ -119,7 +119,6 @@
 			</div>
 	<% end %>
 </div>
-
 
 <script type="text/javascript">
 	$(function(){

@@ -47,3 +47,10 @@ ja:
               restricted:  "制限付きユーザーには許可されていない動作です"
             company_id:
               user_not_working_for: "ユーザが所属していない会社です"
+  views:
+  pagination:
+    first: "&laquo;"
+    last: "&raquo;"
+    previous: "&lsaquo;"
+    next: "&rsaquo;"
+    truncate: "..."

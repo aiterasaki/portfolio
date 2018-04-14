@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
 	devise_parameter_sanitizer.permit(:account_update, keys: [:nick_name, :first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :region_id, :address_city, :address_street, :address_building, :telephone ])
 	end
 
+  def after_sign_in_path_for(resource)
+    products_path # ログイン後に遷移するpathを設定
+  end
+
+  def after_sign_out_path_for(resource)
+    products_path # ログアウト後に遷移するpathを設定
+  end
+
 end

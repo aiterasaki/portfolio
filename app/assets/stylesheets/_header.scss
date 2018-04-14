@@ -21,21 +21,21 @@
 	height: 180px;
 }
 
-.logout,.profile,.mypage,.login,.sign_up,.exhibition_history{
-	height: 30px;
-	border-radius: 4px;
+.logout,.profile,.mypage,.login,.sign_up{
+		height: 30px;
+		border-radius: 4px;
     text-align: center;
     line-height: 30px;
 }
 
-.mypage,.profile,.logout,.exhibition_history{
+.mypage,.profile,.logout{
 	background: rgb(82, 160, 171);
 	    a{
 		color: #fff;
 	    }
 }
 
-.mypage:hover,.profile:hover,.logout:hover,.exhibition_history:hover{
+.mypage:hover,.profile:hover,.logout:hover{
 	background: rgb(234, 53, 45);
 	    a{
 		color: #fff;

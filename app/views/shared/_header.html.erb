@@ -1,13 +1,10 @@
 <nav class="header_nav navbar navbar-expand-lg bg-color fixed-top">
-  <div class="logo_box"><%= link_to image_tag('/images/win_win_logo.png',:width => "160",:height => "120", class: "btn") , products_path %>
+  <div class="logo_box"><%= link_to image_tag('/images/win_logo.png',:width => "160",:height => "120", class: "btn") , products_path %>
   </div>
-
     <div class="col-sm-8">
       <%= form_tag(products_path, method: "get") do  %>
-
           <div class="input-group">
             <%= text_field_tag :search , params[:search],class: "form-control", placeholder:"キーワードから探す"%>
-
             <span class="input-group-btn">
                 <%= button_tag class:'btn' do %>
                   <%= content_tag :span, "", class: "glyphicon glyphicon-search" %>
@@ -17,10 +14,9 @@
        <% end %>
     </div> 
 
-     <div class="col-sm-5 col-sm-offset-7">
+    <div class="col-sm-5 col-sm-offset-7">
       <% if user_signed_in? %>
-      <a class="login_nick_name">こんにちは、<%= current_user.nick_name %>さん
-      </a>
+      <a class="login_nick_name">こんにちは、<%= current_user.nick_name %>さん</a>
 
       <div class="row">
       <% if current_user.admin_flg %>
@@ -30,10 +26,9 @@
           </div>
         </div>
         <% end %>
-
         <div class="col-sm-3">
           <div class="mypage">
-          <%= link_to 'マイページ', user_path(current_user) %> 
+          <%= link_to 'マイページ', user_path(current_user) %>
           </div>
         </div>
         <div class="col-sm-4">
@@ -49,7 +44,6 @@
       </div>
     </div>
       <% else %>
-
       <div class="row">
         <div class="col-sm-3">
           <div class="login">
@@ -62,6 +56,5 @@
           </div>
         </div>
       </div>
-
       <% end %>
 </nav>

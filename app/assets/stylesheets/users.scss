@@ -15,12 +15,35 @@
     padding: 0 0 10px;
 }
 
-.product_image_purchase, {
+.product_image_purchase {
     padding: 4px;
     border: 1px solid #ddd;
     border-radius: 4px;
     width: 300px;
 }
+
+.exhibition_btn{
+    width: 200px;
+        height: 30px;
+        border-radius: 4px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.exhibition_btn{
+    background: rgb(82, 160, 171);
+        a{
+        color: #fff;
+        }
+}
+
+.exhibition_btn:hover{
+    background: rgb(234, 53, 45);
+        a{
+        color: #fff;
+        }
+}
+
 
 .product_image_exhibition{
 	padding: 4px;

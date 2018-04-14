@@ -21,18 +21,17 @@ class ProductsController < ApplicationController
 	def index
 		if params[:ladies_category_id].presence
 			@ladies_category = LadiesCategory.find(params[:ladies_category_id])
-			@products = @ladies_category.products
+			@products = @ladies_category.products.page(params[:page]).per(15)
 			
 		elsif params[:mens_category_id].presence
 			@mens_category = MensCategory.find(params[:mens_category_id])
-			@products = @mens_category.products
+			@products = @mens_category.products.page(params[:page]).per(15)
 			
 		elsif params[:handmade_category_id].presence
 			@handmade_category = HandmadeCategory.find(params[:handmade_category_id])
-			@products = @handmade_category.products
+			@products = @handmade_category.products.page(params[:page]).per(15)
 		else
-			@products = Product.all.order(created_at: 'desc')
-			@products = Product.page(params[:page]).per(15)
+			@products = Product.all.order(created_at: 'desc').page(params[:page]).per(15)
 		end
 
 		@ladies_categories = LadiesCategory.all

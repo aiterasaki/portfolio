@@ -131,13 +131,11 @@
 				<p>販売価格(300〜9,999,999)</p>
 			</div>
 			<div class="col-md-8">
-				<p>
-					価格
-					<span class="require_form">必須
-					</span>
-					<!-- <div class="row"> -->
-						¥<%= f.text_field :price, placeholder: '数字半角入力', class: 'form-control' %>
-					<!-- </div> -->
+				<p>価格
+					<span class="require_form">必須</span>
+				</p>
+				<p class="form-inline">
+					¥<%= f.text_field :price, placeholder: '数字半角入力', class: 'form-control' %>
 				</p>
 			</div>
 

@@ -15,8 +15,7 @@
 		<div class="slider slider-for">
 			<div><%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %>
 			</div>
-			<div><%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %>
-			</div>
+
 
 			<% @product.product_images.each do |image| %>
 				<div><%= attachment_image_tag image, :image, :fill, 290, 290 %>

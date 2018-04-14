@@ -1,5 +1,4 @@
-
-
+<div class="container">
 <% @users.each do |user| %>
 
   <%= link_to user.nick_name,user_path(user.id) %>
@@ -7,12 +6,12 @@
   入会日：<%= user.created_at.strftime('%Y年%m月%d日') %>
 
 | 最終ログイン日：<%= user.last_sign_in_at.try(:strftime,'%Y年%m月%d日 %H:%M') %>
-
-      <%#if !(current_user.admin_flg)  %>
-
+<% unless user.admin_flg? %>
 
   | <%= link_to "削除", user_path(user.id), method: :delete,data: { confirm: "本当に削除しますか?" } %>
-      <%# else %>
-      <%# end %>
+      
+      <% end %>
   <br>
 <% end %>
+
+</div>

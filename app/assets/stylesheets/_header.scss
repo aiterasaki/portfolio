@@ -1,8 +1,9 @@
 .bg-color {
     background: #fff;
 }
+
 .login_nick_name{
-	color: #5e78c1;
+	font-size: 20px;
 }
 
 .input-group{
@@ -18,46 +19,27 @@
 }
 
 .header_nav{
-	height: 180px;
+	height: 200px;
 }
 
-.logout,.profile,.mypage,.login,.sign_up{
+.logout,.profile,.mypage,.login,.sign_up,.user_list,.product_edit,.product_delete{
 		height: 30px;
 		border-radius: 4px;
     text-align: center;
     line-height: 30px;
+    padding: 8px 30px;
+    font-size: 15px;
+    margin: 0 10px;
 }
 
-.mypage,.profile,.logout{
-	background: rgb(82, 160, 171);
-	    a{
-		color: #fff;
-	    }
+.mypage,.profile,.logout,.user_list,.sign_up,.product_edit,.product_delete{
+  border: 1px solid #fc913a;
+  border-color: #fc913a;
+  background: #fff;
+  color: #fc913a;
 }
 
-.mypage:hover,.profile:hover,.logout:hover{
-	background: rgb(234, 53, 45);
-	    a{
-		color: #fff;
-	    }
-}
-
-.login{
-	background: rgb(234, 53, 45);
-    a{
+.mypage:hover,.profile:hover,.logout:hover,.user_list:hover,.sign_up:hover,.product_edit:hover,.product_delete:hover{
+	background-color:#fc913a;
 	color: #fff;
-    }
-}
-
-.sign_up{
-	background: #fff;
-	color: #0099e8;
-	border: 1px solid #0099e8;
-}
-
-.sign_up:hover{
-	background-color:#0099e8;
-	a{
-	color: #fff;
-	}
 }

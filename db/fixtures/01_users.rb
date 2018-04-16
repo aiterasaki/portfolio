@@ -34,13 +34,12 @@ User.seed do |s|
 	s.email = "test@test.com"
 	s.password =              "000000"
 	s.password_confirmation = "000000"
-
 end
 
 10.times do  |i| 
   User.seed do |u|
-  	u.id = i + 3
-    u.nick_name = "ユーザー#{ i + 3 }番"
+  u.id = i + 3
+  u.nick_name = "ユーザー#{ i + 3 }番"
 	u.first_name =  "Example#{ i + 3 }"
 	u.last_name =  "User#{ i + 3 }"
 	u.first_name_kana = "テスト#{ i + 3 }"
@@ -54,6 +53,5 @@ end
 	u.email = "test#{ i + 3 }@test"
 	u.password =              "12345#{ i + 3 }"
 	u.password_confirmation = "12345#{ i + 3 }"
-
   end
 end	

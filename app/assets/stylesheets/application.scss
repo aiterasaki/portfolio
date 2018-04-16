@@ -17,7 +17,6 @@
 // Bootstrap Sass
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 @charset "UTF-8";
 
 /* SCSSファイルの読み込み */
@@ -26,14 +25,13 @@
 @import "products";
 @import "header";
 @import "footer";
-
-/* CSS Document */
-
-html, body {
-	height: 100%;
-}
+@import "orders";
 
 /*共通*/
+
+html, body {
+  height: 100%;
+}
 
 .clearfix::after{
   content: "";
@@ -42,16 +40,18 @@ html, body {
 }
 
 body {
-	background: rgb(245, 245, 245);
+	background: #fffcf0;
 }
 
 a {
   text-decoration: none !important;
+  color: rgb(51, 51, 51);
 }
 
-.form_btn_box{
-    background: #ea352d;
+.form_btn_box,.login{
+    background: #ff4e50;
     color: #fff !important;
+    border: transparent 1px solid;
 }
 
 .price_font{
@@ -63,31 +63,7 @@ a {
 	font-size: 16px;
 }
 
-/*＿＿＿＿*/
-
-
-
 /*とりあえず小カテゴリーは最初消す*/
 #firstBox, #secondBox, #thirdBox{
 	display: none;
-}
-
-@media (max-width: 600px){
-	header{
-		background-position: 32% 50%;
-		border-top: #20567d 5px solid;
-	}
-	.header-contents{
-		min-height: 60px;
-		background-size: 40px 40px;
-		background-position: 10px 50%;
-	}
-	.header-contents h1{
-		padding: 15px 0 5px 55px;
-		font-size: 16px;
-	}
-	.header-contents h2{
-		padding: 0 0 0 55px;
-		font-size: 12px;
-	}
 }

@@ -1,5 +1,5 @@
-<h2 class="text-center">購入履歴
-  </h2>
+<h2 class="text-center"><%= @user.nick_name%>さんの購入履歴</h2>
+
 <% @user.orders.each do |order|%>
       <div class="col-md-12">
         <%= link_to product_path(order.product.id) do %>
@@ -19,7 +19,7 @@
           <table class="table borderless">
             <tbody>
               <tr>
-                <th scope="row">商品名
+                <th style="width:100px;">商品名
                 </th>
                 <td><%= order.product.name %>
                 </td>
@@ -66,8 +66,10 @@
 
 
 <div class="container">
+    <div class="text-center ">
+    <%= link_to "出品履歴", exhibition_history_user_path, class: "exhibition_btn"  %>
+  </div>
 
-<%= link_to "出品履歴", exhibition_history_user_path  %>
 <br>
 <%= link_to "もどる", user_path  %>
 

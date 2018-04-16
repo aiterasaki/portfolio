@@ -16,44 +16,24 @@
 
     <div class="col-sm-7 col-sm-offset-5">
       <% if user_signed_in? %>
-      <a class="login_nick_name">こんにちは、<%= current_user.nick_name %>さん</a>
-      <div class="row">
-      <% if current_user.admin_flg %>
-        <div class="col-sm-3">
-          <div class="mypage">
-          <%= link_to 'ユーザー 一覧', users_path %> 
-          </div>
+        <div class="login_nick_name"><%= current_user.nick_name %>さんでログインしています。
         </div>
+    </div>
+    <br>
+    <div class="col-sm-7 col-sm-offset-5">
+        <% if current_user.admin_flg %>
+          <%= link_to 'ユーザー 一覧', users_path, class: "user_list" %> 
         <% end %>
-        <div class="col-sm-3">
-          <div class="mypage">
-          <%= link_to 'マイページ', user_path(current_user) %>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="profile">
-            <%= link_to 'プロフィール変更', edit_user_registration_path %>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="logout">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          </div>
-        </div>
-      </div>
+          <%= link_to 'マイページ', user_path(current_user), class: "mypage" %>
+
+          <%= link_to 'プロフィール変更', edit_user_registration_path, class: "profile" %>
+
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout" %>
     </div>
       <% else %>
     <div class="col-sm-7 col-sm-offset-5">
-      <div class="col-sm-3">
-        <div class="login">
-          <%= link_to "ログイン", new_user_session_path %>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="sign_up">
-        <%= link_to "新規会員登録", new_user_registration_path %> 
-        </div>
-      </div>
+        <%= link_to "ログイン", new_user_session_path, class: "login" %>
+        <%= link_to "新規会員登録", new_user_registration_path, class: "sign_up" %> 
       <% end %>
     </div>
 </nav>

@@ -1,124 +1,221 @@
 <div class="col-md-2">
   <%= link_to "一覧へもどる", products_path %>
 </div>
+<!-- ______ -->
 
-<div class="col-md-12"> 
-	<div class="col-md-offset-2 col-md-4"> 
+<% if (@product.user.soft_destroyed? && user_signed_in? && current_user.admin_flg?) %>
+<!-- __________________ -->
+		<div class="col-md-12"> 
+			<div class="col-md-offset-2 col-md-4"> 
+				<% if @product.sell_flg == false %>
+				  <div class="sold_out_back_show">
+				    <div class="sold_out">SOLD</div>
+				  </div>
+				<% end %>
 
-	<% if @product.sell_flg == false %>
-	  <div class="sold_out_back_show">
-	    <div class="sold_out">SOLD
-	    </div>
-	  </div>
-	<% end %>
+				<div class="slider slider-for">
+					<div><%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %></div>
 
-		<div class="slider slider-for">
-			<div><%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %>
+					<% @product.product_images.each do |image| %>
+						<div><%= attachment_image_tag image, :image, :fill, 290, 290 %></div>
+					<% end %>
+				</div>
+
+				<div class="slider slider-nav">
+					<div><%= attachment_image_tag @product, :thumbnail, :fill, 70, 70, format: 'jpeg' %></div>
+
+					<% @product.product_images.each do |image| %>
+						<div><%= attachment_image_tag image, :image, :fill, 70, 70 %></div>
+					<% end %>
+				</div>
 			</div>
 
+				<div class="col-md-5"> 
+					<table class="table table-bordered products_table">
+						<tbody>
+							<tr>
+								<th style="width:50px;">出品者</th>
+								<td style="width:200px;"><%= link_to @product.user.nick_name,exhibition_history_user_path(@product.user.id) %>
+								</td>
+							</tr>
+							<tr>
+								<th >商品名</th>
+								<td ><%= @product.name %></td>
+							</tr>
+							<tr>
+								<th >ブランド</th>
+								<td><%= @product.brand %></td>
+							</tr>
+							<tr>
+								<th >商品の状態</th>
+								<td><%= @product.status_i18n %></td>
+							</tr>
+							<tr>
+								<th >配送料の負担</th>
+								<td><%= @product.burden_of_shipping_fee_i18n %></td>
+							</tr>
+							<tr>
+								<th >配送方法</th>
+								<td><%= @product.shipping_method_i18n %></td>
+							</tr>
+							<tr>
+								<th >配送元地域</th>
+								<td><%= @product.region.name %></td>
+							</tr>
+							<tr>
+								<th >発送日の目安</th>
+								<td><%= @product.estimated_shipping_date_i18n %></td>
+							</tr>
+							<tr>
+								<th >カテゴリー</th>
+								<td><%= @product.productable.category.name %>/
+										<%= @product.productable.name %></td>
+							</tr>
+						</tbody>
+					</table>
 
-			<% @product.product_images.each do |image| %>
-				<div><%= attachment_image_tag image, :image, :fill, 290, 290 %>
+				<% if user_signed_in? && current_user.id == @product.user_id %>
+					<%= link_to "編集", edit_product_path(@product.id), class: "product_edit"%> 
+				<% end %>
+
+				<% if user_signed_in? && current_user.admin_flg || user_signed_in? && current_user.id == @product.user_id %>
+					<%= link_to "削除", product_path(@product.id), method: :delete, class: "product_delete", "data-confirm " => "本当に削除しますか？" %>
+				<% end %>
 				</div>
+		</div>
+
+		<div class="col-md-offset-2 col-md-9 col-md-offset-1">
+			<div class="text-center price_font">
+			￥<%= number_to_currency(@product.price) %>(税込)
+			</div>
+		</div>
+
+		<div class="col-md-offset-2 col-md-9 col-md-offset-1"> 
+			<% if @product.sell_flg == false %>
+					<div class="sold_out_btn container">売り切れました
+					</div>
+			<% else %>
+					<% if !(user_signed_in?) || user_signed_in? && current_user.id != @product.user_id %>
+						<div class="buy_btn container"> 
+							<%= link_to "購入", new_product_order_path(product_id: @product.id),class:"form_btn_box btn btn-lg btn-block" %>
+						</div>
+					<% else %>
+					<% end %>
+
+					<div class="detail_setting">
+						<td><%= @product.detail %></td>
+					</div>
 			<% end %>
 		</div>
 
-		<div class="slider slider-nav">
-			<div><%= attachment_image_tag @product, :thumbnail, :fill, 70, 70, format: 'jpeg' %>
+<% end %>
+
+<% unless @product.user.soft_destroyed? %>
+
+		<div class="col-md-12"> 
+			<div class="col-md-offset-2 col-md-4"> 
+				<% if @product.sell_flg == false %>
+				  <div class="sold_out_back_show">
+				    <div class="sold_out">SOLD</div>
+				  </div>
+				<% end %>
+
+				<div class="slider slider-for">
+					<div><%= attachment_image_tag @product, :thumbnail, :fill, 290, 290, format: 'jpeg' %></div>
+
+					<% @product.product_images.each do |image| %>
+						<div><%= attachment_image_tag image, :image, :fill, 290, 290 %></div>
+					<% end %>
+				</div>
+
+				<div class="slider slider-nav">
+					<div><%= attachment_image_tag @product, :thumbnail, :fill, 70, 70, format: 'jpeg' %></div>
+
+					<% @product.product_images.each do |image| %>
+						<div><%= attachment_image_tag image, :image, :fill, 70, 70 %></div>
+					<% end %>
+				</div>
 			</div>
 
-			<% @product.product_images.each do |image| %>
-				<div><%= attachment_image_tag image, :image, :fill, 70, 70 %>
+				<div class="col-md-5"> 
+					<table class="table table-bordered products_table">
+						<tbody>
+							<tr>
+								<th style="width:50px;">出品者</th>
+								<td style="width:200px;"><%= link_to @product.user.nick_name,exhibition_history_user_path(@product.user.id) %>
+								</td>
+							</tr>
+							<tr>
+								<th >商品名</th>
+								<td ><%= @product.name %></td>
+							</tr>
+							<tr>
+								<th >ブランド</th>
+								<td><%= @product.brand %></td>
+							</tr>
+							<tr>
+								<th >商品の状態</th>
+								<td><%= @product.status_i18n %></td>
+							</tr>
+							<tr>
+								<th >配送料の負担</th>
+								<td><%= @product.burden_of_shipping_fee_i18n %></td>
+							</tr>
+							<tr>
+								<th >配送方法</th>
+								<td><%= @product.shipping_method_i18n %></td>
+							</tr>
+							<tr>
+								<th >配送元地域</th>
+								<td><%= @product.region.name %></td>
+							</tr>
+							<tr>
+								<th >発送日の目安</th>
+								<td><%= @product.estimated_shipping_date_i18n %></td>
+							</tr>
+							<tr>
+								<th >カテゴリー</th>
+								<td><%= @product.productable.category.name %>/
+										<%= @product.productable.name %></td>
+							</tr>
+						</tbody>
+					</table>
+
+				<% if user_signed_in? && current_user.id == @product.user_id %>
+					<%= link_to "編集", edit_product_path(@product.id), class: "product_edit"%> 
+				<% end %>
+
+				<% if user_signed_in? && current_user.admin_flg || user_signed_in? && current_user.id == @product.user_id %>
+					<%= link_to "削除", product_path(@product.id), method: :delete, class: "product_delete", "data-confirm " => "本当に削除しますか？" %>
+				<% end %>
 				</div>
+		</div>
+
+		<div class="col-md-offset-2 col-md-9 col-md-offset-1">
+			<div class="text-center price_font">
+			￥<%= number_to_currency(@product.price) %>(税込)
+			</div>
+		</div>
+
+		<div class="col-md-offset-2 col-md-9 col-md-offset-1"> 
+			<% if @product.sell_flg == false %>
+					<div class="sold_out_btn container">売り切れました
+					</div>
+			<% else %>
+					<% if !(user_signed_in?) || user_signed_in? && current_user.id != @product.user_id %>
+						<div class="buy_btn container"> 
+							<%= link_to "購入", new_product_order_path(product_id: @product.id),class:"form_btn_box btn btn-lg btn-block" %>
+						</div>
+					<% else %>
+					<% end %>
+
+					<div class="detail_setting">
+						<td><%= @product.detail %></td>
+					</div>
 			<% end %>
 		</div>
-	</div>
 
-		<div class="col-md-5"> 
-			<table class="table table-bordered products_table">
-				<tbody>
-					<tr>
-						<th style="width:50px;">出品者</th>
-						<td style="width:200px;"><%= link_to @product.user.nick_name,exhibition_history_user_path(@product.user.id) %>
-						</td>
-					</tr>
-					<tr>
-						<th >商品名</th>
-						<td ><%= @product.name %>
-						</td>
-					</tr>
-					<tr>
-						<th >ブランド</th>
-						<td><%= @product.brand %>
-						</td>
-					</tr>
-					<tr>
-						<th >商品の状態</th>
-						<td><%= @product.status_i18n %>
-						</td>
-					</tr>
-					<tr>
-						<th >配送料の負担</th>
-						<td><%= @product.burden_of_shipping_fee_i18n %>
-						</td>
-					</tr>
-					<tr>
-						<th >配送方法</th>
-						<td><%= @product.shipping_method_i18n %>
-						</td>
-					</tr>
-					<tr>
-						<th >配送元地域</th>
-						<td><%= @product.region.name %>
-						</td>
-					</tr>
-					<tr>
-						<th >発送日の目安</th>
-						<td><%= @product.estimated_shipping_date_i18n %>
-						</td>
-					</tr>
-					<tr>
-						<th >カテゴリー</th>
-						<td><%= @product.productable.category.name %>/
-							<%= @product.productable.name %>
-						</td>
-					</tr>
-				</tbody>		
-			</table>
-
-		<% if user_signed_in? && current_user.id == @product.user_id %>
-			<%= link_to "編集", edit_product_path(@product.id), class: "product_edit"%> 
-		<% end %>
-
-		<% if user_signed_in? && current_user.admin_flg || user_signed_in? && current_user.id == @product.user_id %>
-			<%= link_to "削除", product_path(@product.id), method: :delete, class: "product_delete", "data-confirm " => "本当に削除しますか？" %>
-		<% end %>
-		</div>
-</div>
-
-<div class="col-md-offset-2 col-md-9 col-md-offset-1">
-	<div class="text-center price_font">
-	￥<%= number_to_currency(@product.price) %>(税込)
-	</div>
-</div>
-
-<div class="col-md-offset-2 col-md-9 col-md-offset-1"> 
-	<% if @product.sell_flg == false %>
-		<div class="sold_out_btn container">売り切れました
-		</div>
-	<% else %>
-		<% if !(user_signed_in?) || user_signed_in? && current_user.id != @product.user_id %>
-			<div class="buy_btn container"> 
-				<%= link_to "購入", new_product_order_path(product_id: @product.id),class:"form_btn_box btn btn-lg btn-block" %>
-			</div>
-		<% else %>
-		<% end %>
-	　　	
-			<div class="detail_setting">
-				<td><%= @product.detail %></td>
-			</div>
-	<% end %>
-</div>
+<% end %>
 
 <script type="text/javascript">
 	$(function(){

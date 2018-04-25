@@ -24,7 +24,8 @@ before_action :admin, only: [:index, :destroy]
 
     def destroy
         @user = User.find(params[:id])
-        @user.destroy
+        # @user.destroy
+        @user.soft_destroy
         redirect_to users_path
     end
 

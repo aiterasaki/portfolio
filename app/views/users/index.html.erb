@@ -5,6 +5,7 @@
         <th>ユーザー 一覧</th>
         <th scope="col">入会日</th>
         <th scope="col">最終ログイン日</th>
+        <th scope="col">退会日</th>
       </tr>
     </thead>
     <% @users.each do |user| %>
@@ -13,8 +14,15 @@
           <th scope="row"><%= link_to user.nick_name,user_path(user.id) %></th>
           <td><%= user.created_at.strftime('%Y年%m月%d日') %></td>
           <td><%= user.last_sign_in_at.try(:strftime,'%Y年%m月%d日 %H:%M') %></td>
+          <% unless user.soft_destroyed_at.nil? %>
+            <td><%= user.soft_destroyed_at.strftime('%Y年%m月%d日')  %></td>
+          <% end %>
           <% unless user.admin_flg? %>
-            <td><%= link_to "削除", user_path(user.id), method: :delete,data: { confirm: "本当に削除しますか?" }, class: "delete_btn" %></td>
+            <% if user.soft_destroyed?%>
+              <td><%= link_to "退会ずみ", user_path(user.id), class: "soft_destroyed_btn" %></td>
+            <% else %>
+              <td><%= link_to "削除", user_path(user.id), method: :delete,data: { confirm: "本当に削除しますか?" }, class: "delete_btn" %></td>
+            <% end %>
           <% else %>
             <td></td>
           <% end %>

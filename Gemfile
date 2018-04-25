@@ -18,6 +18,7 @@ gem "refile", github: 'refile/refile', require: "refile/rails"
 gem "refile-mini_magick", github: 'refile/refile-mini_magick'
 gem "refile-s3"
 gem 'jquery-rails'
+gem 'kakurenbo-puti'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'

@@ -61,6 +61,7 @@ class ProductsController < ApplicationController
 	end
 
 	def show
+		# @user = User.find(params[:id])
 		@product = Product.find(params[:id])
 	end
 
@@ -87,6 +88,7 @@ class ProductsController < ApplicationController
 
 	def destroy
 		@product = Product.find(params[:id])
+		# @product.soft_destroyed
 		@product.destroy
 		redirect_to products_path
 	end

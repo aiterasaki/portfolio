@@ -13,7 +13,7 @@
     padding: 0 0 10px;
 }
 
-.delete_btn{
+.delete_btn,.soft_destroyed_btn{
     font-size: 15px;
     color: white;
     padding: 10px 50px;
@@ -22,11 +22,19 @@
     border-radius: 4px;
     text-align: center;
     line-height: 30px;
-    background: #ea352e;
 }
-.delete_btn:hover{
+.delete_btn:hover,.soft_destroyed_btn:hover{
     color: white;
 }
+
+.delete_btn{
+    background: #ff4e50;
+}
+
+.soft_destroyed_btn{
+    background: #fc913a;
+}
+
 
 .product_image_purchase {
     padding: 4px;

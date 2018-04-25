@@ -1,17 +1,19 @@
 class Product < ApplicationRecord
-	validates :price, numericality:  { greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999 }
+	validates :price, numericality: { greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999 }
 # ↑バリデーション　動作確認ずみ
 
 	# validates_presence_of :name
 	validates_presence_of :thumbnail
   	attachment :thumbnail
 
-  	# 複数関連しているテーブルとのアソシエーションの記述
-  	# つまり、ladies,mens,handmadeテーブルたち
-  	belongs_to :productable, polymorphic: true
- 
+  soft_deletable dependent_associations: [:user]
+  belongs_to :user
+
+	# 複数関連しているテーブルとのアソシエーションの記述
+	# つまり、ladies,mens,handmadeテーブルたち
+	belongs_to :productable, polymorphic: true
 	belongs_to :region	
-	belongs_to :user
+
 	has_one :order
 
 	has_many :product_images, dependent: :destroy

@@ -1,47 +1,100 @@
-<h2 class="text-center"><%= @user.nick_name%>さんの出品履歴</h2>
+<% unless !(@user.soft_destroyed? && user_signed_in? && current_user.admin_flg?) %>
 
-<div class="container">
-  <% @user.products.each do |product| %>
-    <div class="col-md-3 index_item_box">
-      <%= link_to product_path(product.id) do %>
-        <% if product.sell_flg == false %>
-          <div class="sold_out_exhibition">
-            <div class="sold_out">SOLD                
-            </div>
-          </div>
-          <div class ="product_image_exhibition">
-            <%= image_tag attachment_url(product, :thumbnail, :fill, 220, 220) %>
-          </div>
-        <% else %>
-            <div class="">
-              <div class="">    
+<h2 class="text-center"><%= @user.nick_name%>さんの出品履歴</h2>
+    <div class="container">
+      <% @user.products.each do |product| %>
+        <div class="col-md-3 index_item_box">
+          <%= link_to product_path(product.id) do %>
+            <% if product.sell_flg == false %>
+              <div class="sold_out_exhibition">
+                <div class="sold_out">SOLD</div>
               </div>
-            </div>
-            <div class ="product_image_exhibition">
-              <%= image_tag attachment_url(product, :thumbnail, :fill, 220, 220) %>
-            </div>
-        <% end %>
-          <p><%= truncate(product.name, length: 15) %></p>
-          <br>
-          <div class="col-sm-offset-2 col-md-8">
-            ￥<%=link_to number_to_currency(product.price), product_path(product.id) %>(税込)
-          </div>
+              <div class ="product_image_exhibition">
+                <%= image_tag attachment_url(product, :thumbnail, :fill, 220, 220) %>
+              </div>
+            <% else %>
+                <div class="">
+                  <div class=""></div>
+                </div>
+                <div class ="product_image_exhibition">
+                  <%= image_tag attachment_url(product, :thumbnail, :fill, 220, 220) %>
+                </div>
+            <% end %>
+              <p><%= truncate(product.name, length: 15) %></p>
+              <br>
+              <div class="col-sm-offset-2 col-md-8">
+                ￥<%=link_to number_to_currency(product.price), product_path(product.id) %>(税込)
+              </div>
+          <% end %>
+        </div>
       <% end %>
     </div>
-  <% end %>
-</div>
 
-<div class="container">
-  <% if user_signed_in? && current_user.id  %>
-  <div class="text-center ">
-    <%= link_to "購入履歴", purchase_history_user_path, class: "purchase_btn"  %>
-  </div>
-    <%= link_to "もどる", user_path  %>
-  <% else %>
-    <%= link_to "もどる", products_path  %>
-  <% end %>
-</div>
+    <div class="container">
+      <% if user_signed_in? && current_user.id  %>
+      <div class="text-center ">
+        <%= link_to "購入履歴", purchase_history_user_path, class: "purchase_btn"  %>
+      </div>
+        <%= link_to "もどる", user_path  %>
+      <% else %>
+        <%= link_to "もどる", products_path  %>
+      <% end %>
+    </div>
 
+<% end -%>
+
+
+<% if (@user.soft_destroyed?) %>
+
+<%# elsif (@user.soft_destroyed? && user_signed_in? && current_user.admin_flg?) %>
+
+<% else%>
+
+  <h2 class="text-center"><%= @user.nick_name%>さんの出品履歴</h2>
+    <div class="container">
+      <% @user.products.each do |product| %>
+        <div class="col-md-3 index_item_box">
+          <%= link_to product_path(product.id) do %>
+            <% if product.sell_flg == false %>
+              <div class="sold_out_exhibition">
+                <div class="sold_out">SOLD</div>
+              </div>
+              <div class ="product_image_exhibition">
+                <%= image_tag attachment_url(product, :thumbnail, :fill, 220, 220) %>
+              </div>
+            <% else %>
+                <div class="">
+                  <div class=""></div>
+                </div>
+                <div class ="product_image_exhibition">
+                  <%= image_tag attachment_url(product, :thumbnail, :fill, 220, 220) %>
+                </div>
+            <% end %>
+              <p><%= truncate(product.name, length: 15) %></p>
+              <br>
+              <div class="col-sm-offset-2 col-md-8">
+                ￥<%=link_to number_to_currency(product.price), product_path(product.id) %>(税込)
+              </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="container">
+      <% if user_signed_in? && current_user.id  %>
+      <div class="text-center ">
+        <%= link_to "購入履歴", purchase_history_user_path, class: "purchase_btn"  %>
+      </div>
+        <%= link_to "もどる", user_path  %>
+      <% else %>
+        <%= link_to "もどる", products_path  %>
+      <% end %>
+    </div>
+<!-- ____________________     -->
+    <%# end -%>
+  <%# end %>
+<% end %>
+<!-- ____________________ -->
 <script type="text/javascript">
   $(function(){
      $('.slider-for').slick({

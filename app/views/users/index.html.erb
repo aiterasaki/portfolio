@@ -21,9 +21,11 @@
             <% if user.soft_destroyed?%>
               <td><%= link_to "退会ずみ", user_path(user.id), class: "soft_destroyed_btn" %></td>
             <% else %>
+              <td></td>
               <td><%= link_to "削除", user_path(user.id), method: :delete,data: { confirm: "本当に削除しますか?" }, class: "delete_btn" %></td>
             <% end %>
           <% else %>
+            <td></td>
             <td></td>
           <% end %>
         </tr>

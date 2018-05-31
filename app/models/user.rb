@@ -9,7 +9,8 @@ class User < ApplicationRecord
          :trackable,
          :validatable
 
-soft_deletable #gem 'kakurenbo-puti'で使用。
+#gem 'kakurenbo-puti'論理削除で使用。
+soft_deletable 
 
   # Deviseを使うと、問答無用でemailがユニーク扱いになる。
   # それだと論理削除した際に再登録できないので、一旦emailに関する検証を削除する
@@ -21,14 +22,18 @@ soft_deletable #gem 'kakurenbo-puti'で使用。
     end
   end
 
-# Deviseの認証に関わる箇所
+  # Deviseの認証に関わる箇所
   def self.find_for_authentication(warden_conditions)
     without_soft_destroyed.where(email: warden_conditions[:email]).first
   end
 
+  # devise 論理削除が絡むため、emailバリデーション修正。
 	validates :email,presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
 	validates_format_of :email, with: Devise.email_regexp, if: :email_changed?
-	validates_uniqueness_of :email, scope: :deleted_at, if: :email_changed?
+	# validates_uniqueness_of :email, scope: :deleted_at, if: :email_changed?
+  validates_uniqueness_of :email, scope: :soft_destroyed_at, if: :email_changed?
+
+
 	validates :nick_name,length: { in: 2..20 }, presence: { message: 'は必須項目です。'}
 	validates :first_name, length: { in: 1..20 },presence: { message: 'は必須項目です。'}
 	validates :last_name, length: { in: 1..20 },presence: { message: 'は必須項目です。'}
